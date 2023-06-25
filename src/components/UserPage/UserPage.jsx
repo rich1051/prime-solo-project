@@ -1,10 +1,24 @@
 import React from "react";
 import LogOutButton from "../LogOutButton/LogOutButton";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import SearchResult from "../SearchResult/SearchResult";
+import { useState } from "react";
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
+
+  const dispatch = useDispatch();
+
+  let [search, setSearch] = useState("");
+
+  const searchMovies = (event) => {
+    event.preventDefault();
+    console.log("Search input is:", search);
+    dispatch({ type: "GET_MOVIES", payload: search });
+    setSearch("");
+  };
+
   return (
     <>
       <div className="container">
@@ -15,11 +29,12 @@ function UserPage() {
       <form>
         <input
           type="text"
-          placeholder="Search movies here!"
-          // value={search}
-          // onChange={(event) => setSearch(event.target.value)}
+          placeholder="Search for movies here!"
+          value={search}
+          onChange={(event) => setSearch(event.target.value)}
         />
-        <input type="submit" value="SEARCH" />
+        <input type="submit" value="SUBMIT" />
+        <SearchResult />
       </form>
     </>
   );
