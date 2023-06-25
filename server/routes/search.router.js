@@ -10,7 +10,7 @@ router.get(`/:search`, (req, res) => {
 	const searchInput = req.params.search;
 	axios
 		.get(
-            `http://img.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${searchInput}`
+            `http://www.omdbapi.com/?apikey=${process.env.OMDB_API_KEY}&s=${searchInput}&type=movie`
 		)
 		.then((response) => {
 			res.send(response.data);

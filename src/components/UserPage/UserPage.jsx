@@ -12,10 +12,13 @@ function UserPage() {
 
   let [search, setSearch] = useState("");
 
+  const [lastSearch, setLastSearch] = useState("");
+
   const searchMovies = (event) => {
     event.preventDefault();
     console.log("Search input is:", search);
     dispatch({ type: "GET_MOVIE", payload: search });
+    setLastSearch(search);
     setSearch("");
   };
 
@@ -26,7 +29,7 @@ function UserPage() {
         <p>Your ID is: {user.id}</p>
         <LogOutButton className="btn" />
       </div>
-      <form>
+      <form onSubmit={searchMovies}>
         <input
           type="text"
           placeholder="Search for movies here!"
@@ -34,6 +37,7 @@ function UserPage() {
           onChange={(event) => setSearch(event.target.value)}
         />
         <input type="submit" value="SUBMIT" />
+        <div>You searched for: {lastSearch} </div>
         <SearchResult />
       </form>
     </>
