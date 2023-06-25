@@ -15,7 +15,7 @@ function UserPage() {
   const searchMovies = (event) => {
     event.preventDefault();
     console.log("Search input is:", search);
-    dispatch({ type: "GET_MOVIES", payload: search });
+    dispatch({ type: "GET_MOVIE", payload: search });
     setSearch("");
   };
 
