@@ -25,9 +25,9 @@ function UserPage() {
   return (
     <>
       <div className="container">
-        <h2>Welcome, {user.username}!</h2>
+        <h2>We're glad you're here, {user.username}!</h2>
         <p>Your ID is: {user.id}</p>
-        <LogOutButton className="btn" />
+        <h3>Search for a movie and get started!</h3>
       </div>
       <form onSubmit={searchMovies}>
         <input
@@ -38,6 +38,7 @@ function UserPage() {
         />
         <input type="submit" value="SUBMIT" />
         <div>You searched for: {lastSearch} </div>
+        <br></br>
         <SearchResult />
       </form>
     </>
