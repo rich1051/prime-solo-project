@@ -14,7 +14,7 @@ const SearchResult = () => {
       {movieListReducer.Search?.map((movie, i) => (
         <div key={i}>
           <img src={movie.Poster}></img>
-          <p>{movie.Title}</p>
+          <p>{movie.Title} ({movie.Year})</p>
         </div>
       ))}
     </div>
