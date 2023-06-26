@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 function SearchResult() {
   const movieListReducer = useSelector((store) => store.movieListReducer);
   const isMovieError = movieListReducer.Error !== undefined;
-  const history = useHistory()
+  const history = useHistory();
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -14,8 +14,8 @@ function SearchResult() {
   if (isMovieError) {
     return (
       <div>
-        There is no movie with that name. Please refine search query and try
-        again.
+        There is no movie with that name or there are too many movies with the
+        specified parameters. Please refine search query and try again.
       </div>
     );
   } else {
@@ -34,6 +34,6 @@ function SearchResult() {
       </div>
     );
   }
-};
+}
 
 export default SearchResult;

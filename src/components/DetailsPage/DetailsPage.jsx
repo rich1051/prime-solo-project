@@ -18,12 +18,9 @@ function DetailsPage() {
             <h3 className="details-title">{details.title}</h3>
             <img
               className="details-image"
-              src={details.poster}
-              alt={details.title}
+              src={details.Poster}
+              alt={details.Title}
             />
-            <p className="details-genre">
-              Genre(s): {details.genres.join(", ")}
-            </p>
             <p className="details-description">
               Description: {details.description}
             </p>

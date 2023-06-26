@@ -34,6 +34,10 @@ function Nav() {
               Home
             </Link>
 
+            <Link className="navLink" to="/recipes">
+              My Recipes
+            </Link>
+
             <Link className="navLink" to="/favorites">
               Favorites
             </Link>
