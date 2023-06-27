@@ -1,15 +1,9 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import MovieItem from "../MovieItem/MovieItem";
 
-function SearchResult() {
+function MovieList() {
   const movieListReducer = useSelector((store) => store.movieListReducer);
   const isMovieError = movieListReducer.Error !== undefined;
-  const history = useHistory();
-  const dispatch = useDispatch();
-
-  const handleClick = () => {
-    history.push("/details");
-  };
 
   if (isMovieError) {
     return (
@@ -23,12 +17,7 @@ function SearchResult() {
       <div>
         {movieListReducer.Search?.map((movie, i) => (
           <div key={i}>
-            <div onClick={handleClick}>
-              <img src={movie.Poster}></img>
-              <p>
-                {movie.Title} ({movie.Year})
-              </p>
-            </div>
+            <MovieItem movie={movie} />
           </div>
         ))}
       </div>
@@ -36,4 +25,4 @@ function SearchResult() {
   }
 }
 
-export default SearchResult;
+export default MovieList;

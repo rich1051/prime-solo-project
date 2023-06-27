@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import SearchResult from "../SearchResult/SearchResult";
+import MovieList from "../MovieList/MovieList";
 import { useState } from "react";
 
 function UserPage() {
@@ -43,7 +43,7 @@ function UserPage() {
           <div>You searched for: {lastSearch}</div>
         )}
         <br></br>
-        <SearchResult />
+        <MovieList />
       </form>
     </>
   );

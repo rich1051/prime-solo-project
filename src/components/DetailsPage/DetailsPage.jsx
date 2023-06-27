@@ -14,15 +14,15 @@ function DetailsPage() {
     <>
       <div className="details">
         {detailsReducer.map((details) => (
-          <div key={details.id}>
-            <h3 className="details-title">{details.title}</h3>
+          <div key={details.imdbID}>
+            <h3 className="details-title">{details.Title}</h3>
             <img
               className="details-image"
               src={details.Poster}
               alt={details.Title}
             />
             <p className="details-description">
-              Description: {details.description}
+              Description: {details.Plot}
             </p>
           </div>
         ))}
