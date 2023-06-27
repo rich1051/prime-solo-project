@@ -18,17 +18,26 @@ function DetailsPage() {
       payload: params.imdbID,
     });
   }, []);
-console.log('imdbID IS:', params);
+  console.log("imdbID IS:", params);
   return (
     <>
       <div className="details">
         <div key={detailsReducer.imdbID}>
-          <h3 className="details-title">{detailsReducer.Title}</h3>
+          <h3 className="details-title">
+            {detailsReducer.Title} ({detailsReducer.Year})
+          </h3>
           <img
             className="details-image"
             src={detailsReducer.Poster}
             alt={detailsReducer.Title}
           />
+          <p className="details-information">
+            Rating: {detailsReducer.Rated}
+            <br />
+            Director(s): {detailsReducer.Director}
+            <br />
+            Cast: {detailsReducer.Actors}
+          </p>
           <p className="details-description">
             Description: {detailsReducer.Plot}
           </p>
