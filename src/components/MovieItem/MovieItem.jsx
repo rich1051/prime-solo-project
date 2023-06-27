@@ -6,13 +6,13 @@ function MovieItem( {movie} ) {
   const history = useHistory();
 
   const handleClick = () => {
-    dispatch({
-      type: "FETCH_DETAILS",
-      payload: movie.id,
-    });
-    history.push("/details");
+    // dispatch({
+    //   type: "FETCH_DETAILS",
+    //   payload: movie.imdbID,
+    // });
+    history.push("/details/"+movie.imdbID);
   };
-
+  console.log('MOVIE IS:', movie)
   return (
     <div onClick={handleClick}>
       <img src={movie.Poster}></img>
