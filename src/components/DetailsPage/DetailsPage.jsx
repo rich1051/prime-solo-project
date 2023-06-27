@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
+import AddRecipe from "../AddRecipe/AddRecipe";
 
 function DetailsPage() {
   const dispatch = useDispatch();
@@ -8,9 +9,10 @@ function DetailsPage() {
   const detailsReducer = useSelector((store) => store.detailsReducer);
   const params = useParams();
 
-  const handleClick = () => {
+  const handleBack = () => {
     history.push("/");
   };
+
   console.log(detailsReducer);
   useEffect(() => {
     dispatch({
@@ -44,7 +46,8 @@ function DetailsPage() {
         </div>
         <br />
       </div>
-      <button onClick={handleClick}>Back</button>
+      <AddRecipe />
+      <button onClick={handleBack}>Back</button>
     </>
   );
 }
