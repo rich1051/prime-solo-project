@@ -1,8 +1,11 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-function AddRecipe() {
+function AddRecipeModal() {
+
+  const addRecipeReducer = useSelector((store) => store.addRecipeReducer.recipes);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -105,8 +108,19 @@ function AddRecipe() {
           <button type="submit">Add Recipe</button>
         </form>
       </Modal>
+      <div>
+        {addRecipeReducer.map((recipe, i) => (
+          <div key={i}>
+            <h4>{recipe.title}</h4>
+            <p>Author: {recipe.author}</p>
+            <button>View</button>
+            <button>Edit</button>
+            <button>Remove</button>
+          </div>
+        ))}
+      </div>
     </>
   );
 }
 
-export default AddRecipe;
+export default AddRecipeModal;
