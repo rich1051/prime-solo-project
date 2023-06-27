@@ -41,7 +41,7 @@ function DetailsPage() {
             Cast: {detailsReducer.Actors}
           </p>
           <p className="details-description">
-            Description: {detailsReducer.Plot}
+            Plot: {detailsReducer.Plot}
           </p>
         </div>
         <br />

@@ -3,23 +3,40 @@ import { useState } from "react";
 
 function AddRecipe() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [backstory, setBackstory] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [instructions, setInstructions] = useState("");
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleModalAdd = () => {
+  const handleModalAdd = (e) => {
+    e.preventDefault();
     // Logic to add the recipe goes here
+    const newRecipe = {
+      title,
+      author,
+      backstory,
+      ingredients,
+      instructions,
+    };
     // For example, dispatch an action to update the state with the new recipe
     dispatch({
       type: "ADD_RECIPE",
-      payload: {
-        // Include necessary data for the new recipe
-      },
+      payload: newRecipe,
     });
 
     // Close the modal after adding the recipe
     setIsModalOpen(false);
+    // Reset the form fields
+    setTitle("");
+    setAuthor("");
+    setBackstory("");
+    setIngredients("");
+    setInstructions("");
   };
 
   const handleAdd = () => {
@@ -36,24 +53,53 @@ function AddRecipe() {
         contentLabel="Add Recipe Modal"
       >
         {/* Modal content */}
-        <form>
+        <form onSubmit={handleModalAdd}>
           <button onClick={toggleModal}>X</button>
           <br />
-          <input placeholder="Recipe Name" />
+          <label>
+            Title:
+            <input
+              type="text"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </label>
           <br />
-          <input placeholder="Author" />
+          <label>
+            Author:
+            <input
+              type="text"
+              value={author}
+              onChange={(e) => setAuthor(e.target.value)}
+            />
+          </label>
           <br />
-          <input placeholder="Backstory" />
+          <label>
+            Backstory:
+            <textarea
+              value={backstory}
+              onChange={(e) => setBackstory(e.target.value)}
+            />
+          </label>
           <br />
-          <input placeholder="Ingredients" />
+          <label>
+            Ingredients:
+            <textarea
+              value={ingredients}
+              onChange={(e) => setIngredients(e.target.value)}
+            />
+          </label>
           <br />
-          <input placeholder="Steps" />
+          <label>
+            Instructions:
+            <textarea
+              value={instructions}
+              onChange={(e) => setInstructions(e.target.value)}
+            />
+          </label>
           <br />
-          <button>Submit</button>
+          <button type="submit">Add Recipe</button>
         </form>
-        {/* Form to add a new recipe */}
-        {/* Input fields, submit button, etc. */}
-        {/* Handle the form submission with handleModalAdd */}
       </Modal>
     </>
   );
