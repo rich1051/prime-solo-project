@@ -18,7 +18,7 @@ function AddRecipe() {
 
   const handleModalAdd = (e) => {
     e.preventDefault();
-    // Logic to add the recipe goes here
+    // Logic to add the recipe
     const newRecipe = {
       title,
       author,
@@ -26,7 +26,7 @@ function AddRecipe() {
       ingredients,
       instructions,
     };
-    // For example, dispatch an action to update the state with the new recipe
+    // Dispatch an action to update the state with the new recipe
     dispatch({
       type: "ADD_RECIPE",
       payload: newRecipe,
@@ -54,6 +54,7 @@ function AddRecipe() {
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
         contentLabel="Add Recipe Modal"
+        ariaHideApp={false}
       >
         {/* Modal content */}
         <form onSubmit={handleModalAdd}>
