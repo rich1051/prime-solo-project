@@ -49,6 +49,10 @@ function AddRecipeModal() {
     setIsModalOpen(true);
   };
 
+  const handleViewRecipe = () => {
+    console.log("Modal work pls");
+  }
+
   return (
     <>
       <button onClick={handleAdd}>Add Recipe</button>
@@ -113,9 +117,7 @@ function AddRecipeModal() {
           <div key={i}>
             <h4>{recipe.title}</h4>
             <p>Author: {recipe.author}</p>
-            <button>View</button>
-            <button>Edit</button>
-            <button>Remove</button>
+            <button onClick={handleViewRecipe}>View</button>
           </div>
         ))}
       </div>
