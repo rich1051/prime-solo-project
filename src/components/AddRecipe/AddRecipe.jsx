@@ -1,5 +1,6 @@
 import Modal from "react-modal";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
 
 function AddRecipe() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -8,6 +9,8 @@ function AddRecipe() {
   const [backstory, setBackstory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+
+  const dispatch = useDispatch();
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);

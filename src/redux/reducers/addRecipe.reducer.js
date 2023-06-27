@@ -10,4 +10,4 @@ const addRecipeReducer = (state = [], action) => {
     }
   };
 
-export default addRecipeReducer
+export default addRecipeReducer;
