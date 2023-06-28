@@ -1,47 +1,94 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
 
 function ViewRecipeModal() {
-  // Other code...
-
-  const addRecipeReducer = useSelector(
-    (store) => store.addRecipeReducer.recipes
+  const getRecipeReducer = useSelector(
+    (store) => store.getRecipeReducer
   );
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const dispatch = useDispatch();
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
   };
 
-  // State variable to track the visibility of the modal
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  // State variable to store the currently selected recipe
-  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const handleModalFavorite = (e) => {
+    e.preventDefault();
+    // Logic to favorite the recipe
+    const currentRecipe = {
+      title,
+      author,
+      backstory,
+      ingredients,
+      instructions,
+    };
+    // Dispatch an action to update the state with the current recipe
+    dispatch({
+      type: "SET_RECIPES",
+      payload: currentRecipe,
+    });
 
-  // Function to handle the "View" button click and display the modal
+    // Make a GET request to the backend
+    axios
+      .get("/api/recipes", currentRecipe)
+      .then((response) => {
+        // Handle the successful response if needed
+        console.log("Recipe viewed:", response.data);
+      })
+      .catch((error) => {
+        // Handle errors if needed
+        console.log("Error viewing recipe:", error);
+      });
 
+    // Close the modal after viewing the recipe
+    setIsModalOpen(false);
+  };
 
-  // Function to hide the modal
-  const closeModal = () => {
-    setModalVisible(false);
+  const handleView = () => {
+    setIsModalOpen(true);
   };
 
   return (
     <>
+      <button onClick={handleView}>View</button>
+
       <Modal
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
         contentLabel="Add Recipe Modal"
         ariaHideApp={false}
       >
-        <div className="modal-content">
-          <h3>{selectedRecipe.title}</h3>
-          <p>Author: {selectedRecipe.author}</p>
-          <p>Backstory: {selectedRecipe.backstory}</p>
-          <p>Ingredients: {selectedRecipe.ingredients}</p>
-          <p>Instructions: {selectedRecipe.instructions}</p>
-          <button onClick={closeModal}>Close</button>
-        </div>
+        {/* Modal content */}
+        <button onClick={toggleModal}>X</button>
+        <br />
+        <label>
+          Title:
+          <div></div>
+        </label>
+        <br />
+        <label>
+          Author:
+          <div></div>
+        </label>
+        <br />
+        <label>
+          Backstory:
+          <div></div>
+        </label>
+        <br />
+        <label>
+          Ingredients:
+          <div></div>
+        </label>
+        <br />
+        <label>
+          <div></div>
+        </label>
+        <br />
+        <button onClick={handleModalFavorite}>Favorite</button>
       </Modal>
     </>
   );

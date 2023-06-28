@@ -2,10 +2,12 @@ import Modal from "react-modal";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 
 function AddRecipeModal() {
-
-  const addRecipeReducer = useSelector((store) => store.addRecipeReducer.recipes);
+  const addRecipeReducer = useSelector(
+    (store) => store.addRecipeReducer.recipes
+  );
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
@@ -36,17 +38,17 @@ function AddRecipeModal() {
       payload: newRecipe,
     });
 
-  // Make a POST request to the backend
-  axios
-  .post('/api/recipes', newRecipe)
-  .then((response) => {
-    // Handle the successful response if needed
-    console.log('Recipe added:', response.data);
-  })
-  .catch((error) => {
-    // Handle errors if needed
-    console.log('Error adding recipe:', error);
-  });
+    // Make a POST request to the backend
+    axios 
+      .post("/api/recipes", newRecipe)
+      .then((response) => {
+        // Handle the successful response if needed
+        console.log("Recipe added:", response.data);
+      })
+      .catch((error) => {
+        // Handle errors if needed
+        console.log("Error adding recipe:", error);
+      });
 
     // Close the modal after adding the recipe
     setIsModalOpen(false);
@@ -62,9 +64,13 @@ function AddRecipeModal() {
     setIsModalOpen(true);
   };
 
-  const handleViewRecipe = () => {
+  const handleView = () => {
     console.log("Modal work pls");
-  }
+  };
+
+  const handleDelete = (recipe) => {
+    dispatch({ type: "DELETE_RECIPE", payload: recipe });
+  };
 
   return (
     <>
@@ -130,7 +136,8 @@ function AddRecipeModal() {
           <div key={i}>
             <h4>{recipe.title}</h4>
             <p>Author: {recipe.author}</p>
-            <button onClick={handleViewRecipe}>View</button>
+            <ViewRecipeModal />
+            <button onClick={() => handleDelete(recipe)}>DELETE</button>
           </div>
         ))}
       </div>

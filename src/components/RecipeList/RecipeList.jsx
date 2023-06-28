@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
+import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 
 function RecipeList() {
   const getRecipeReducer = useSelector((store) => store.getRecipeReducer);
@@ -13,7 +14,7 @@ function RecipeList() {
 
   const getRecipes = () => {
     axios
-      .get('/api/recipes')
+      .get("/api/recipes")
       .then((response) => {
         // Dispatch an action to update the state with the fetched recipes
         dispatch({
@@ -22,8 +23,12 @@ function RecipeList() {
         });
       })
       .catch((error) => {
-        console.log('Error fetching recipes:', error);
+        console.log("Error fetching recipes:", error);
       });
+  };
+
+  const handleDelete = (recipe) => {
+    dispatch({ type: "DELETE_RECIPE", payload: recipe });
   };
 
   return (
@@ -32,7 +37,8 @@ function RecipeList() {
         <div key={recipe.id}>
           <h4>{recipe.title}</h4>
           <p>Author: {recipe.author}</p>
-          {/* Display other recipe details as needed */}
+          <ViewRecipeModal />
+          <button onClick={() => handleDelete(recipe)}>DELETE</button>
         </div>
       ))}
     </div>

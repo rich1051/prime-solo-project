@@ -15,13 +15,16 @@ function DetailsPage() {
   };
 
   console.log(detailsReducer);
+
   useEffect(() => {
     dispatch({
       type: "FETCH_DETAILS",
       payload: params.imdbID,
     });
   }, []);
+
   console.log("imdbID IS:", params);
+
   return (
     <>
       <div className="details">
@@ -41,14 +44,13 @@ function DetailsPage() {
             <br />
             Cast: {detailsReducer.Actors}
           </p>
-          <p className="details-description">
-            Plot: {detailsReducer.Plot}
-          </p>
+          <p className="details-description">Plot: {detailsReducer.Plot}</p>
         </div>
         <br />
       </div>
       <AddRecipeModal />
       <RecipeList />
+      <br />
       <button onClick={handleBack}>Back</button>
     </>
   );

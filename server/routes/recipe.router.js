@@ -58,7 +58,7 @@ router.post('/', (req, res) => {
   
     pool.query(queryText, queryValue)
       .then(() => {
-        res.sendStatus(204);
+        res.sendStatus(201);
       })
       .catch((error) => {
         console.log('Error deleting recipe:', error);
