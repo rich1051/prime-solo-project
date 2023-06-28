@@ -1,6 +1,7 @@
 import Modal from "react-modal";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
 
 function AddRecipeModal() {
 
@@ -34,6 +35,18 @@ function AddRecipeModal() {
       type: "ADD_RECIPE",
       payload: newRecipe,
     });
+
+  // Make a POST request to the backend API
+  axios
+  .post('/api/recipes', newRecipe)
+  .then((response) => {
+    // Handle the successful response if needed
+    console.log('Recipe added:', response.data);
+  })
+  .catch((error) => {
+    // Handle errors if needed
+    console.log('Error adding recipe:', error);
+  });
 
     // Close the modal after adding the recipe
     setIsModalOpen(false);

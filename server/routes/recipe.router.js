@@ -5,9 +5,10 @@ const axios = require("axios");
 const { Pool } = require("pg");
 const router = express.Router();
 
-router.post('/recipes', (req, res) => {
+// post new recipe:
+router.post('/api/recipes', (req, res) => {
     const { title, author, backstory, ingredients, instructions, movieId, userId } = req.body;
-    const queryText = 'INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions", "movie_id", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *';
+    const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions", "movie_id", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
     pool.query(queryText, [title, author, backstory, ingredients, instructions, movieId, userId])
       .then((result) => {
         res.send(result.rows[0]);
@@ -18,6 +19,7 @@ router.post('/recipes', (req, res) => {
       });
   });
 
+// edit existing recipe:
   router.put('/recipes/:id', (req, res) => {
     const recipeId = req.params.id;
     const { title, author, backstory, ingredients, instructions, movieId, userId } = req.body;
@@ -34,6 +36,7 @@ router.post('/recipes', (req, res) => {
       });
   });
 
+// delete existing recipe:
   router.delete('/recipes/:id', (req, res) => {
     const recipeId = req.params.id;
     const queryText = 'DELETE FROM "recipe" WHERE "id" = $1';
