@@ -5,7 +5,20 @@ const axios = require("axios");
 const { Pool } = require("pg");
 const router = express.Router();
 
-// post new recipe:
+// get existing recipes from db:
+router.get('/', (req, res) => {
+  const queryText = 'SELECT * FROM "recipe"';
+  pool.query(queryText)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log('Error retrieving recipes:', error);
+      res.sendStatus(500);
+    });
+});
+
+// post new recipe to db:
 router.post('/', (req, res) => {
   console.log("POST RECEIVED LETS GOOOOOOOOOO");
     const { title, author, backstory, ingredients, instructions } = req.body;
@@ -20,7 +33,7 @@ router.post('/', (req, res) => {
       });
   });
 
-// edit existing recipe:
+// edit existing recipe in db:
   router.put('/:id', (req, res) => {
     const recipeId = req.params.id;
     const { title, author, backstory, ingredients, instructions } = req.body;
@@ -37,8 +50,8 @@ router.post('/', (req, res) => {
       });
   });
 
-// delete existing recipe:
-  router.delete('/recipes/:id', (req, res) => {
+// delete existing recipe from db:
+  router.delete('/:id', (req, res) => {
     const recipeId = req.params.id;
     const queryText = 'DELETE FROM "recipe" WHERE "id" = $1';
     const queryValue = [recipeId];

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import AddRecipeModal from "../AddRecipeModal/AddRecipeModal";
+import RecipeList from "../RecipeList/RecipeList";
 
 function DetailsPage() {
   const dispatch = useDispatch();
@@ -47,6 +48,7 @@ function DetailsPage() {
         <br />
       </div>
       <AddRecipeModal />
+      <RecipeList />
       <button onClick={handleBack}>Back</button>
     </>
   );
