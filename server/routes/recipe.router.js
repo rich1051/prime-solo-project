@@ -6,7 +6,7 @@ const { Pool } = require("pg");
 const router = express.Router();
 
 // post new recipe:
-router.post('/recipes', (req, res) => {
+router.post('/', (req, res) => {
   console.log("POST RECEIVED LETS GOOOOOOOOOO");
     const { title, author, backstory, ingredients, instructions } = req.body;
     const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions") VALUES ($1, $2, $3, $4, $5) RETURNING *`;
@@ -21,11 +21,11 @@ router.post('/recipes', (req, res) => {
   });
 
 // edit existing recipe:
-  router.put('/recipes/:id', (req, res) => {
+  router.put('/:id', (req, res) => {
     const recipeId = req.params.id;
-    const { title, author, backstory, ingredients, instructions, movieId, userId } = req.body;
-    const queryText = 'UPDATE "recipe" SET "title" = $1, "author" = $2, "backstory" = $3, "ingredients" = $4, "instructions" = $5, "movie_id" = $6, "user_id" = $7 WHERE "id" = $8 RETURNING *';
-    const queryValues = [title, author, backstory, ingredients, instructions, movieId, userId, recipeId];
+    const { title, author, backstory, ingredients, instructions } = req.body;
+    const queryText = 'UPDATE "recipe" SET "title" = $1, "author" = $2, "backstory" = $3, "ingredients" = $4, "instructions" = $5 WHERE "id" = $6 RETURNING *';
+    const queryValues = [title, author, backstory, ingredients, instructions, recipeId];
   
     pool.query(queryText, queryValues)
       .then((result) => {
