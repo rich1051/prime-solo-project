@@ -26,8 +26,11 @@ CREATE TABLE "movie" (
 
 CREATE TABLE "recipe" (
     "id" SERIAL PRIMARY KEY,
-    "name" VARCHAR(255),
-    "description" TEXT,
+    "title" VARCHAR(255) NOT NULL,
+    "author" VARCHAR(80) NOT NULL,
+    "backstory" TEXT,
+    "ingredients" TEXT NOT NULL,
+    "instructions" TEXT NOT NULL,
     "movie_id" INT REFERENCES "movie" ("id"),
     "user_id" INT REFERENCES "user" ("id")
 );
