@@ -36,7 +36,7 @@ function AddRecipeModal() {
       payload: newRecipe,
     });
 
-  // Make a POST request to the backend API
+  // Make a POST request to the backend
   axios
   .post('/api/recipes', newRecipe)
   .then((response) => {

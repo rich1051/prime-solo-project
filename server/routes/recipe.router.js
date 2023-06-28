@@ -6,10 +6,11 @@ const { Pool } = require("pg");
 const router = express.Router();
 
 // post new recipe:
-router.post('/api/recipes', (req, res) => {
-    const { title, author, backstory, ingredients, instructions, movieId, userId } = req.body;
-    const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions", "movie_id", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *`;
-    pool.query(queryText, [title, author, backstory, ingredients, instructions, movieId, userId])
+router.post('/recipes', (req, res) => {
+  console.log("POST RECEIVED LETS GOOOOOOOOOO");
+    const { title, author, backstory, ingredients, instructions } = req.body;
+    const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions") VALUES ($1, $2, $3, $4, $5) RETURNING *`;
+    pool.query(queryText, [title, author, backstory, ingredients, instructions])
       .then((result) => {
         res.send(result.rows[0]);
       })
