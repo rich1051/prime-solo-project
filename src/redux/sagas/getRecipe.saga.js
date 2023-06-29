@@ -7,7 +7,7 @@ function* getRecipe() {
       const recipes = response.data;
       yield put({ type: 'SET_RECIPES', payload: recipes });
     } catch (error) {
-      console.log('Error in getRecipe:', error);
+      console.log('Error in getRecipe saga:', error);
     }
   }
 
