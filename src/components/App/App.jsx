@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
 
 import './App.css';
+import FavoriteList from '../FavoriteList/FavoriteList';
 
 function App() {
   const dispatch = useDispatch();
@@ -70,11 +71,19 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
+            // logged in shows DetailsPage else shows LoginPage
             exact
             path="/details/:imdbID"
           >
             <DetailsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Favorites page else shows LoginPage
+            exact
+            path="/favorites"
+          >
+            <FavoriteList />
           </ProtectedRoute>
 
           <Route

@@ -7,7 +7,7 @@ const router = express.Router();
 
 // get favorites from db:
 router.get("/", (req, res) => {
-  const queryText = 'SELECT * FROM "recipe"';
+  const queryText = 'SELECT * FROM "recipe" WHERE "favorite" = TRUE';
   pool
     .query(queryText)
     .then((result) => {
