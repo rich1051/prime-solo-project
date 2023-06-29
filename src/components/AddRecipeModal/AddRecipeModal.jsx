@@ -1,14 +1,9 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import axios from "axios";
-import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 
 function AddRecipeModal() {
-  const addRecipeReducer = useSelector(
-    (store) => store.addRecipeReducer.recipes
-  );
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
@@ -39,7 +34,7 @@ function AddRecipeModal() {
     });
 
     // Make a POST request to the backend
-    axios 
+    axios
       .post("/api/recipes", newRecipe)
       .then((response) => {
         // Handle the successful response if needed
@@ -65,16 +60,8 @@ function AddRecipeModal() {
     setIsModalOpen(true);
   };
 
-  const handleView = () => {
-    console.log("Modal work pls");
-  };
-
-  const handleDelete = (recipe) => {
-    dispatch({ type: "DELETE_RECIPE", payload: recipe });
-  };
-
-// THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
-const getRecipes = () => {
+  // THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
+  const getRecipes = () => {
     axios
       .get("/api/recipes")
       .then((response) => {
@@ -149,7 +136,6 @@ const getRecipes = () => {
           <button type="submit">Add Recipe</button>
         </form>
       </Modal>
-      
     </>
   );
 }

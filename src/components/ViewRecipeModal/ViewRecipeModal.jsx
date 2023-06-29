@@ -1,18 +1,10 @@
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
 
-function ViewRecipeModal({recipe}) {
-
-  const {title, author, backstory, ingredients, instructions } = recipe;
-
-  const getRecipeReducer = useSelector(
-    (store) => store.getRecipeReducer
-  );
+function ViewRecipeModal({ recipe }) {
+  const { title, author, backstory, ingredients, instructions } = recipe;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const dispatch = useDispatch();
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
