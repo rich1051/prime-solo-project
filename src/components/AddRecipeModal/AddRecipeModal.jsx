@@ -44,6 +44,7 @@ function AddRecipeModal() {
       .then((response) => {
         // Handle the successful response if needed
         console.log("Recipe added:", response.data);
+        fetchRecipes();
       })
       .catch((error) => {
         // Handle errors if needed
@@ -70,6 +71,23 @@ function AddRecipeModal() {
 
   const handleDelete = (recipe) => {
     dispatch({ type: "DELETE_RECIPE", payload: recipe });
+  };
+
+
+  const fetchRecipes = () => {
+    axios
+      .get("/api/recipes")
+      .then((response) => {
+        // Dispatch an action to update the state with the fetched recipes
+        dispatch({
+          type: "SET_RECIPES",
+          payload: response.data,
+        });
+        console.log("Fetched recipes:", response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching recipes:", error);
+      });
   };
 
   return (

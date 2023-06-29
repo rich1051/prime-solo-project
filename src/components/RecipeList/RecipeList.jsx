@@ -17,10 +17,12 @@ function RecipeList() {
       .get("/api/recipes")
       .then((response) => {
         // Dispatch an action to update the state with the fetched recipes
+        console.log('response is:', response)
         dispatch({
           type: "SET_RECIPES",
           payload: response.data,
         });
+        console.log('response.data is:', response.data)
       })
       .catch((error) => {
         console.log("Error fetching recipes:", error);
@@ -37,7 +39,7 @@ function RecipeList() {
         <div key={recipe.id}>
           <h4>{recipe.title}</h4>
           <p>Author: {recipe.author}</p>
-          <ViewRecipeModal />
+          <ViewRecipeModal recipe={recipe}/>
           <button onClick={() => handleDelete(recipe)}>DELETE</button>
         </div>
       ))}

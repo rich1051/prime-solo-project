@@ -1,8 +1,13 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
+import RecipeList from "../RecipeList/RecipeList";
 
-function ViewRecipeModal() {
+function ViewRecipeModal({recipe}) {
+
+  console.log('Recipe prop is:', recipe)
+  const {title, author, backstory, ingredients, instructions } = recipe;
+
   const getRecipeReducer = useSelector(
     (store) => store.getRecipeReducer
   );
@@ -17,33 +22,7 @@ function ViewRecipeModal() {
 
   const handleModalFavorite = (e) => {
     e.preventDefault();
-    // Logic to favorite the recipe
-    const currentRecipe = {
-      title,
-      author,
-      backstory,
-      ingredients,
-      instructions,
-    };
-    // Dispatch an action to update the state with the current recipe
-    dispatch({
-      type: "SET_RECIPES",
-      payload: currentRecipe,
-    });
 
-    // Make a GET request to the backend
-    axios
-      .get("/api/recipes", currentRecipe)
-      .then((response) => {
-        // Handle the successful response if needed
-        console.log("Recipe viewed:", response.data);
-      })
-      .catch((error) => {
-        // Handle errors if needed
-        console.log("Error viewing recipe:", error);
-      });
-
-    // Close the modal after viewing the recipe
     setIsModalOpen(false);
   };
 
@@ -66,26 +45,27 @@ function ViewRecipeModal() {
         <br />
         <label>
           Title:
-          <div></div>
+          <div>{title}</div>
         </label>
         <br />
         <label>
           Author:
-          <div></div>
+          <div>{author}</div>
         </label>
         <br />
         <label>
           Backstory:
-          <div></div>
+          <div>{backstory}</div>
         </label>
         <br />
         <label>
           Ingredients:
-          <div></div>
+          <div>{ingredients}</div>
         </label>
         <br />
         <label>
-          <div></div>
+          Instructions:
+          <div>{instructions}</div>
         </label>
         <br />
         <button onClick={handleModalFavorite}>Favorite</button>
