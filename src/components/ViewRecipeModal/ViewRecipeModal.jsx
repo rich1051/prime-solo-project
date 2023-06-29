@@ -1,8 +1,9 @@
 import { useState } from "react";
 import Modal from "react-modal";
+import axios from "axios";
 
 function ViewRecipeModal({ recipe }) {
-  const { title, author, backstory, ingredients, instructions } = recipe;
+  const { id, title, author, backstory, ingredients, instructions } = recipe;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -10,9 +11,16 @@ function ViewRecipeModal({ recipe }) {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleModalFavorite = (e) => {
+  const handleFavorite = async (e) => {
     e.preventDefault();
-
+    try {
+      // Update the favorite status in the database
+      await axios.put(`/api/recipes/${id}/favorite`);
+      setIsModalOpen(false);
+    } catch (error) {
+      console.error("Error updating recipe favorite status:", error);
+      // Handle error
+    }
     setIsModalOpen(false);
   };
 
@@ -58,7 +66,7 @@ function ViewRecipeModal({ recipe }) {
           <div>{instructions}</div>
         </label>
         <br />
-        <button onClick={handleModalFavorite}>Favorite</button>
+        <button onClick={handleFavorite}>Favorite</button>
       </Modal>
     </>
   );

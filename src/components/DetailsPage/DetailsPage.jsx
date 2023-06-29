@@ -38,11 +38,13 @@ function DetailsPage() {
             alt={detailsReducer.Title}
           />
           <p className="details-information">
-            Rating: {detailsReducer.Rated}
+            Rated: {detailsReducer.Rated}
             <br />
             Director(s): {detailsReducer.Director}
             <br />
             Cast: {detailsReducer.Actors}
+            <br />
+            IMDb Rating: {detailsReducer.imdbRating}
           </p>
           <p className="details-description">Plot: {detailsReducer.Plot}</p>
         </div>
