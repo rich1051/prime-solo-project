@@ -44,7 +44,7 @@ function AddRecipeModal() {
       .then((response) => {
         // Handle the successful response if needed
         console.log("Recipe added:", response.data);
-        fetchRecipes();
+        getRecipes();
       })
       .catch((error) => {
         // Handle errors if needed
@@ -73,8 +73,8 @@ function AddRecipeModal() {
     dispatch({ type: "DELETE_RECIPE", payload: recipe });
   };
 
-
-  const fetchRecipes = () => {
+// THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
+const getRecipes = () => {
     axios
       .get("/api/recipes")
       .then((response) => {
@@ -149,16 +149,7 @@ function AddRecipeModal() {
           <button type="submit">Add Recipe</button>
         </form>
       </Modal>
-      <div>
-        {addRecipeReducer.map((recipe, i) => (
-          <div key={i}>
-            <h4>{recipe.title}</h4>
-            <p>Author: {recipe.author}</p>
-            <ViewRecipeModal />
-            <button onClick={() => handleDelete(recipe)}>DELETE</button>
-          </div>
-        ))}
-      </div>
+      
     </>
   );
 }

@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Modal from "react-modal";
-import RecipeList from "../RecipeList/RecipeList";
 
 function ViewRecipeModal({recipe}) {
 
-  console.log('Recipe prop is:', recipe)
   const {title, author, backstory, ingredients, instructions } = recipe;
 
   const getRecipeReducer = useSelector(
