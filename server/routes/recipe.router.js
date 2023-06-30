@@ -64,9 +64,23 @@ router.put("/:id/edit", (req, res) => {
 // favorite or unfavorite a recipe in db:
 router.put("/:id/favorite", (req, res) => {
   const recipeId = req.params.id;
-  const putQuery = `UPDATE "recipe" SET "favorite" = CASE 
-    WHEN "favorite" = TRUE THEN FALSE 
-    ELSE TRUE END WHERE "id" = $1`;
+  const putQuery = `UPDATE "recipe" SET "favorite" = TRUE WHERE "id" = $1`;
+  const values = [recipeId];
+  pool
+    .query(putQuery, values)
+    .then((response) => {
+      console.log("PUT SUCCESS", response);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Issue with the PUT", err);
+      res.sendStatus(500);
+    });
+});
+
+router.put("/:id/unfavorite", (req, res) => {
+  const recipeId = req.params.id;
+  const putQuery = `UPDATE "recipe" SET "favorite" = FALSE WHERE "id" = $1`;
   const values = [recipeId];
   pool
     .query(putQuery, values)
