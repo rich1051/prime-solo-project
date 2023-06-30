@@ -43,14 +43,12 @@
 }
 
 .navLink:hover {
-  background-color: rgb(204, 204, 204);
   font-weight: 800;
+  transition: all 0.3s ease;
 }
 
 .nav-title:hover {
   background-color: rgb(204, 204, 204);
   padding: 21px 10px;
-  border-top-right-radius: 12px;
-  border-bottom-right-radius: 12px;
-  font-weight: 800;
+  transition: all 0.8s ease;
 }
