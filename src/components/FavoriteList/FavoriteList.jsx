@@ -35,7 +35,7 @@ function FavoriteList() {
   const handleRemove = async (recipeId) => {
     try {
       // Update the favorite status in the database
-      await axios.put(`/api/recipes/${recipeId}/favorite`);
+      await axios.put(`/api/recipes/${recipeId}/unfavorite`);
       getFavorites();
     } catch (error) {
       console.error("Error updating recipe favorite status:", error);
