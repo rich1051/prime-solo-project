@@ -1,0 +1,51 @@
+.submit-btn {
+    padding: 10px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 5px;
+    cursor: pointer;
+    color: whitesmoke;
+    background-color: black;
+    font-size: 1.1em;
+    transition: all 0.4s ease;
+}
+
+.submit-btn:hover {
+    padding: 10px;
+    border-radius: 10px;
+    border-style: inset;
+    border-width: 5px;
+    cursor: pointer;
+    color: black;
+    background-color: goldenrod;
+    transition: all 0.4s ease;
+}
+
+.search-bar {
+    padding: 15px;
+    width: 500px;
+    height: 10px;
+    border-radius: 12px;
+    border-style: solid;
+    border-color: black;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.search-bar:hover::placeholder {
+    color: white;
+    transition: all 0.5s ease;
+}
+
+.search-form {
+    text-align: center;
+}
+
+.search-result {
+    font-size: 1.3em;
+    color: black;
+}
+
+h2 {
+    color: black;
+}

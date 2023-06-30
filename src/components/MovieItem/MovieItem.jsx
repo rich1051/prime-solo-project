@@ -14,7 +14,9 @@ function MovieItem( {movie} ) {
     <div onClick={handleClick} className="movie-title-poster">
       <img className="movie-poster" src={movie.Poster}></img>
       <p className="movie-title">
-        {movie.Title} ({movie.Year})
+        {movie.Title} 
+        <br></br>
+        ({movie.Year})
       </p>
     </div>
   );

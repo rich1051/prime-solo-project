@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import MovieList from "../MovieList/MovieList";
 import { useState } from "react";
+import "./UserPage.css"
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
@@ -29,18 +30,19 @@ function UserPage() {
         <p>Your ID is: {user.id}</p>
         <h3>Search for a movie and get started!</h3>
       </div>
-      <form onSubmit={searchMovies}>
+      <form className="search-form" onSubmit={searchMovies}>
         <input
+          className="search-bar"
           type="text"
           placeholder="Search for movies here!"
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
-        <input type="submit" value="SUBMIT" />
+        <input className="submit-btn" type="submit" value="SUBMIT" />
         {lastSearch === "" ? (
-          <div>You haven't searched for anything yet!</div>
+          <div className="search-result">You haven't searched for anything yet!</div>
         ) : (
-          <div>You searched for: {lastSearch}</div>
+          <div className="search-result">You searched for: {lastSearch}</div>
         )}
         <br></br>
         <MovieList />

@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import MovieItem from "../MovieItem/MovieItem";
+import "./MovieList.css"
 
 function MovieList() {
   const movieListReducer = useSelector((store) => store.movieListReducer);
@@ -14,7 +15,7 @@ function MovieList() {
     );
   } else {
     return (
-      <div>
+      <div className="movies">
         {movieListReducer.Search?.map((movie, i) => (
           <div key={i}>
             <MovieItem movie={movie} />
