@@ -20,9 +20,9 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
+import FavoriteList from '../FavoriteList/FavoriteList';
 
 import './App.css';
-import FavoriteList from '../FavoriteList/FavoriteList';
 
 function App() {
   const dispatch = useDispatch();

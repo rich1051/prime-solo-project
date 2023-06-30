@@ -1,0 +1,29 @@
+.movie-poster {
+    border-radius: 10px;
+    border-style: double;
+    border-width: 12px;
+    border-color: goldenrod;
+    margin: 10px;
+    height: 400px;
+    width: 267px;
+}
+
+.movie-poster:hover {
+    border-color: green;
+}
+
+.movie-title {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.0em;
+}
+
+.movie-title-poster:hover {
+    font-size: 1.1em;
+}
+
+.movie-title-poster {
+    padding: 20px;
+    border-radius: 50px;
+    margin: 5px;
+    text-align: center;
+}

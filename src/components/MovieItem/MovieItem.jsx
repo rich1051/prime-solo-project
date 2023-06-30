@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import "./MovieItem.css"
 
 function MovieItem( {movie} ) {
   const dispatch = useDispatch();
@@ -10,9 +11,9 @@ function MovieItem( {movie} ) {
   };
   console.log('MOVIE IS:', movie)
   return (
-    <div onClick={handleClick}>
-      <img src={movie.Poster}></img>
-      <p>
+    <div onClick={handleClick} className="movie-title-poster">
+      <img className="movie-poster" src={movie.Poster}></img>
+      <p className="movie-title">
         {movie.Title} ({movie.Year})
       </p>
     </div>
