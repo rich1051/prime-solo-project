@@ -15,7 +15,7 @@ function RecipeList() {
   // THIS GET REQUEST IS CALLED AT THE BEGINNING TO SHOW ALL EXISTING RECIPES IN THE DB:
   const getRecipes = () => {
     axios
-      .get("/api/recipes")
+      .get(`/api/recipes/`)
       .then((response) => {
         // Dispatch an action to update the state with the fetched recipes
         console.log("response is:", response);

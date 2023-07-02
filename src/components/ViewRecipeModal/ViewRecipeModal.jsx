@@ -1,9 +1,13 @@
 import { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import './ViewRecipeModal.css'
 
 function ViewRecipeModal({ recipe }) {
+
+  const user = useSelector((store) => store.user);
+  console.log(user)
 
   const dispatch = useDispatch();
   
@@ -21,12 +25,12 @@ function ViewRecipeModal({ recipe }) {
     try {
       if (isFavorite) {
         // Remove from favorites
-        await axios.put(`/api/recipes/${id}/unfavorite`);
+        await axios.post(`/api/recipes/${id}/unfavorite`, {userId: user.id});
         setIsFavorite(false);
         getFavorites();
       } else {
         // Add to favorites
-        await axios.put(`/api/recipes/${id}/favorite`);
+        await axios.post(`/api/recipes/${id}/favorite`, {userId: user.id});
         setIsFavorite(true);
       }
     } catch (error) {
@@ -61,6 +65,7 @@ function ViewRecipeModal({ recipe }) {
       <button onClick={handleView}>View</button>
 
       <Modal
+        className='modal'
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
         contentLabel="Add Recipe Modal"

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 function*  deleteRecipe(action) {
     const recipe = action.payload;
-    console.log(recipe);
+    console.log('RECIPE IS:', recipe);
     try{
         yield axios.delete(`/api/recipes/${action.payload.id}`, { data: { user_id: action.payload.user_id}});
         yield put({type:"FETCH_RECIPES"});

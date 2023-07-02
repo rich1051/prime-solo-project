@@ -19,6 +19,21 @@ router.get("/", (req, res) => {
     });
 });
 
+// get existing recipes from db:
+router.get("/:movieId", (req, res) => {
+  const queryText = 'SELECT * FROM "recipe" WHERE "movie_id" = $1';
+  const values = [req.params.movieId]
+  pool
+    .query(queryText, values)
+    .then((result) => {
+      res.send(result.rows);
+    })
+    .catch((error) => {
+      console.log("Error retrieving recipes:", error);
+      res.sendStatus(500);
+    });
+});
+
 // post new recipe to db:
 router.post("/", (req, res) => {
   console.log("POST RECEIVED LETS GOOOOOOOOOO");
@@ -62,34 +77,37 @@ router.put("/:id/edit", (req, res) => {
 });
 
 // favorite or unfavorite a recipe in db:
-router.put("/:id/favorite", (req, res) => {
+router.post("/:id/favorite", (req, res) => {
   const recipeId = req.params.id;
-  const putQuery = `UPDATE "recipe" SET "favorite" = TRUE WHERE "id" = $1`;
-  const values = [recipeId];
+  const userId = req.body.userId
+  const postQuery = `INSERT INTO "favorite_recipe" (
+    "user_id", "recipe_id") VALUES ($1, $2)`;
+  const values = [userId, recipeId];
   pool
-    .query(putQuery, values)
+    .query(postQuery, values)
     .then((response) => {
-      console.log("PUT SUCCESS", response);
+      console.log("FAVORITE POST SUCCESS", response);
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.log("Issue with the PUT", err);
+      console.log("Issue with the FAVORITE POST", err);
       res.sendStatus(500);
     });
 });
 
-router.put("/:id/unfavorite", (req, res) => {
+router.delete("/:id/unfavorite", (req, res) => {
   const recipeId = req.params.id;
-  const putQuery = `UPDATE "recipe" SET "favorite" = FALSE WHERE "id" = $1`;
-  const values = [recipeId];
+  const userId = req.body.userId
+  const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "recipe_id" = $2`;
+  const values = [userId, recipeId];
   pool
-    .query(putQuery, values)
+    .query(postQuery, values)
     .then((response) => {
-      console.log("PUT SUCCESS", response);
+      console.log("UNFAVORITE DELETE SUCCESS", response);
       res.sendStatus(200);
     })
     .catch((err) => {
-      console.log("Issue with the PUT", err);
+      console.log("Issue with the UNFAVORITE DELETE", err);
       res.sendStatus(500);
     });
 });

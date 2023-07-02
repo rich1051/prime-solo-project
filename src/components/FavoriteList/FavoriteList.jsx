@@ -6,6 +6,8 @@ import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 function FavoriteList() {
   const dispatch = useDispatch();
   const getFavoriteReducer = useSelector((store) => store.getFavoriteReducer);
+  const user = useSelector((store) => store.user);
+
 
   console.log("getFavoriteReducer is:", getFavoriteReducer);
 
@@ -17,7 +19,7 @@ function FavoriteList() {
   // THIS GET REQUEST IS CALLED AT THE BEGINNING TO SHOW ALL EXISTING RECIPES IN THE DB:
   const getFavorites = () => {
     axios
-      .get("/api/favorites")
+      .get(`/api/favorites/${user.id}`)
       .then((response) => {
         // Dispatch an action to update the state with the fetched recipes
         console.log("response is:", response);
@@ -35,7 +37,7 @@ function FavoriteList() {
   const handleRemove = async (recipeId) => {
     try {
       // Update the favorite status in the database
-      await axios.put(`/api/recipes/${recipeId}/unfavorite`);
+      await axios.delete(`/api/recipes/${recipeId}/unfavorite`);
       getFavorites();
     } catch (error) {
       console.error("Error updating recipe favorite status:", error);

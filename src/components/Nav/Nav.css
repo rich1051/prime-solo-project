@@ -24,6 +24,7 @@
   color: black;
   padding-left: 10px;
   margin: 0;
+  transition: all 0.6s ease;
 }
 
 .navLink {
@@ -40,6 +41,7 @@
   cursor: pointer;
   outline: 0;
   border-radius: 12px;
+  transition: all 0.3s ease;
 }
 
 .navLink:hover {
