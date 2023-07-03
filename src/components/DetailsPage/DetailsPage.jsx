@@ -30,6 +30,7 @@ function DetailsPage() {
     <>
       <div className="details">
         <div key={detailsReducer.imdbID}>
+          <div className="details-no-description">
           <div className="details-title-image">
           <h3 className="details-title">
             {detailsReducer.Title} ({detailsReducer.Year})
@@ -49,6 +50,7 @@ function DetailsPage() {
             <br />
             IMDb Rating: {detailsReducer.imdbRating}
           </p>
+          </div>
           <p className="details-description">Plot: {detailsReducer.Plot}</p>
         </div>
         <br />

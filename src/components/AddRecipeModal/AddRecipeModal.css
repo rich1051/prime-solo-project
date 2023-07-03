@@ -18,8 +18,8 @@ input {
     border-style: outset;
     border-width: 5px;
     cursor: pointer;
-    color: whitesmoke;
-    background-color: black;
+    color: black;
+    background-color: goldenrod;
     font-size: 1.1em;
     transition: all 0.4s ease;
   }
@@ -31,7 +31,7 @@ input {
     border-width: 5px;
     cursor: pointer;
     color: black;
-    background-color: goldenrod;
+    background-color: rgb(255, 205, 79);
     transition: all 0.4s ease;
 }
 
