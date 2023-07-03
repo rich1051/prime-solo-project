@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import AddRecipeModal from "../AddRecipeModal/AddRecipeModal";
 import RecipeList from "../RecipeList/RecipeList";
+import './DetailsPage.css'
 
 function DetailsPage() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function DetailsPage() {
     <>
       <div className="details">
         <div key={detailsReducer.imdbID}>
+          <div className="details-title-image">
           <h3 className="details-title">
             {detailsReducer.Title} ({detailsReducer.Year})
           </h3>
@@ -37,6 +39,7 @@ function DetailsPage() {
             src={detailsReducer.Poster}
             alt={detailsReducer.Title}
           />
+          </div>
           <p className="details-information">
             Rated: {detailsReducer.Rated}
             <br />
