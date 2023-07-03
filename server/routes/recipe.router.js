@@ -115,11 +115,19 @@ router.delete("/:id/unfavorite", (req, res) => {
 // delete existing recipe from db:
 router.delete("/:id", (req, res) => {
   const recipeId = req.params.id;
-  const queryText = 'DELETE FROM "recipe" WHERE "id" = $1';
+
+  // First, alter the foreign key constraint to include cascading deletions
+  const alterConstraintQuery = 'ALTER TABLE "favorite_recipe" DROP CONSTRAINT IF EXISTS favorite_recipe_recipe_id_fkey, ADD CONSTRAINT favorite_recipe_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES "recipe" (id) ON DELETE CASCADE';
+
+  // Then, delete the recipe from the "recipe" table
+  const deleteRecipeQuery = 'DELETE FROM "recipe" WHERE "id" = $1';
   const queryValue = [recipeId];
 
   pool
-    .query(queryText, queryValue)
+    .query(alterConstraintQuery)
+    .then(() => {
+      return pool.query(deleteRecipeQuery, queryValue);
+    })
     .then(() => {
       res.sendStatus(201);
     })
