@@ -1,9 +1,10 @@
-.label {
-    color: black;
-}
-
-.text {
-    color: black;
+form {
+    margin: auto;
+    background-color: #a2a2a2;
+    height: 95%;
+    width: 95%;
+    padding: 10px;
+    border-radius: 10px;
 }
 
 input {
@@ -11,7 +12,7 @@ input {
     border-radius: 10px;
 }
 
-.favorite-btn {
+.add-btn {
     padding: 10px;
     border-radius: 10px;
     border-style: outset;
@@ -23,7 +24,7 @@ input {
     transition: all 0.4s ease;
   }
 
-  .favorite-btn:hover {
+  .add-btn:hover {
     padding: 10px;
     border-radius: 10px;
     border-style: inset;
@@ -32,6 +33,35 @@ input {
     color: black;
     background-color: goldenrod;
     transition: all 0.4s ease;
+}
+
+label {
+    color: white;
+}
+
+.title-input {
+    width: 35%;
+    text-align: center;
+}
+
+.author-input {
+    width: 25%;
+    text-align: center;
+}
+
+.backstory-input {
+    width: 95%;
+    height: 12%;
+}
+
+.ingredients-input {
+    width: 95%;
+    height: 15%;
+}
+
+.instructions-input {
+    width: 95%;
+    height: 15%;
 }
 
 .toggle-btn {
@@ -54,28 +84,3 @@ input {
     background-color: red;
     transition: all 0.4s ease;
 }
-
-.view-btn {
-    margin: 10px;
-    padding: 5px;
-    border-radius: 10px;
-    border-style: outset;
-    border-width: 5px;
-    cursor: pointer;
-    color: white;
-    background-color: black;
-    font-size: 1.1em;
-    transition: all 0.4s ease;
-}
-
-.view-btn:hover {
-    padding: 5px;
-    border-radius: 10px;
-    border-style: inset;
-    border-width: 5px;
-    cursor: pointer;
-    color: black;
-    background-color: goldenrod;
-    transition: all 0.4s ease;
-}
-

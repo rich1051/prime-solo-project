@@ -2,6 +2,7 @@ import Modal from "react-modal";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import "./AddRecipeModal.css"
 
 function AddRecipeModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -79,9 +80,9 @@ function AddRecipeModal() {
 
   return (
     <>
-      <button onClick={handleAdd}>Add Recipe</button>
+      <button className="add-btn" onClick={handleAdd}>Add Recipe</button>
 
-      <Modal
+      <Modal 
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
         contentLabel="Add Recipe Modal"
@@ -89,11 +90,12 @@ function AddRecipeModal() {
       >
         {/* Modal content */}
         <form onSubmit={handleModalAdd}>
-          <button onClick={toggleModal}>X</button>
+          <button className="toggle-btn" onClick={toggleModal}>×</button>
           <br />
           <label>
             Title:
             <input
+            className="title-input"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -103,6 +105,7 @@ function AddRecipeModal() {
           <label>
             Author:
             <input
+            className="author-input"
               type="text"
               value={author}
               onChange={(e) => setAuthor(e.target.value)}
@@ -111,7 +114,8 @@ function AddRecipeModal() {
           <br />
           <label>
             Backstory:
-            <textarea
+            <input
+              className="backstory-input"
               value={backstory}
               onChange={(e) => setBackstory(e.target.value)}
             />
@@ -119,7 +123,8 @@ function AddRecipeModal() {
           <br />
           <label>
             Ingredients:
-            <textarea
+            <input
+              className="ingredients-input"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
             />
@@ -127,13 +132,14 @@ function AddRecipeModal() {
           <br />
           <label>
             Instructions:
-            <textarea
+            <input
+              className="instructions-input"
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
             />
           </label>
           <br />
-          <button type="submit">Add Recipe</button>
+          <button className="add-btn" type="submit">Add Recipe</button>
         </form>
       </Modal>
     </>

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
+import "./FavoriteList.css"
 
 function FavoriteList() {
   const dispatch = useDispatch();
@@ -45,7 +46,7 @@ function FavoriteList() {
   };
 
   return (
-    <div>
+    <div className="recipe-item">
       {getFavoriteReducer.length === 0 ? (
         <p>Oh no! You don't have any favorite recipes!</p>
       ) : (
@@ -54,7 +55,7 @@ function FavoriteList() {
             <h4>{recipe.title}</h4>
             <p>Author: {recipe.author}</p>
             <ViewRecipeModal recipe={recipe} />
-            <button onClick={() => handleRemove(recipe.id)}>Remove</button>
+            <button className="remove-btn" onClick={() => handleRemove(recipe.id)}>Remove</button>
           </div>
         ))
       )}

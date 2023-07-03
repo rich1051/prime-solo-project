@@ -1,0 +1,38 @@
+.recipe-item {
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    transition: all 0.8s ease;
+}
+
+.recipe-item:hover {
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    color: black;
+    transition: all 0.8s ease;
+}
+
+.remove-btn {
+    margin: 10px;
+    padding: 5px;
+    border-radius: 10px;
+    border-style: outset;
+    border-width: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: darkred;
+    font-size: 1.1em;
+    transition: all 0.4s ease;
+}
+
+.remove-btn:hover {
+    padding: 5px;
+    border-radius: 10px;
+    border-style: inset;
+    border-width: 5px;
+    cursor: pointer;
+    color: white;
+    background-color: red;
+    transition: all 0.4s ease;
+}

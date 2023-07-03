@@ -56,7 +56,7 @@ function DetailsPage() {
       <AddRecipeModal />
       <RecipeList />
       <br />
-      <button onClick={handleBack}>Back</button>
+      <button className="back-btn" onClick={handleBack}>Back</button>
     </>
   );
 }

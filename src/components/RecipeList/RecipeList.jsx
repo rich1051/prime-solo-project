@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
+import "./RecipeList.css"
 
 function RecipeList() {
   const getRecipeReducer = useSelector((store) => store.getRecipeReducer);
@@ -35,13 +36,13 @@ function RecipeList() {
   };
 
   return (
-    <div>
+    <div className="recipe-item">
       {getRecipeReducer.map((recipe) => (
         <div key={recipe.id}>
           <h4>{recipe.title}</h4>
           <p>Author: {recipe.author}</p>
           <ViewRecipeModal recipe={recipe} />
-          <button onClick={() => handleDelete(recipe)}>DELETE</button>
+          <button className="delete-btn" onClick={() => handleDelete(recipe)}>DELETE</button>
         </div>
       ))}
     </div>
