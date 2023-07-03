@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 import "./FavoriteList.css"
+import FavoriteItem from "../FavoriteItem/FavoriteItem";
 
 function FavoriteList() {
   const dispatch = useDispatch();
@@ -35,27 +35,14 @@ function FavoriteList() {
       });
   };
 
-  const handleRemove = async (recipeId) => {
-    try {
-      // Update the favorite status in the database
-      await axios.delete(`/api/recipes/${recipeId}/unfavorite`);
-      getFavorites();
-    } catch (error) {
-      console.error("Error updating recipe favorite status:", error);
-    }
-  };
-
   return (
-    <div className="recipe-item">
+    <div>
       {getFavoriteReducer.length === 0 ? (
         <p>Oh no! You don't have any favorite recipes!</p>
       ) : (
         getFavoriteReducer.map((recipe) => (
           <div key={recipe.id}>
-            <h4>{recipe.title}</h4>
-            <p>Author: {recipe.author}</p>
-            <ViewRecipeModal recipe={recipe} />
-            <button className="remove-btn" onClick={() => handleRemove(recipe.id)}>Remove</button>
+            <FavoriteItem recipe = {recipe} />
           </div>
         ))
       )}

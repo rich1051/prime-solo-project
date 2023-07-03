@@ -3,15 +3,16 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 import "./RecipeList.css";
+import RecipeItem from "../RecipeItem/RecipeItem";
 
-function RecipeList() {
+function RecipeList({ imdbId }) {
   const getRecipeReducer = useSelector((store) => store.getRecipeReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
     // Fetch recipes when the component mounts
     getRecipes();
-  }, []);
+  }, [imdbId]);
 
   const getRecipes = () => {
     axios
@@ -32,7 +33,7 @@ function RecipeList() {
   };
 
   return (
-    <div className="recipe-item">
+    <div>
       {getRecipeReducer.length === 0 ? (
         <div>
           <p>Oh no! There are no recipes created yet!</p>
@@ -41,15 +42,7 @@ function RecipeList() {
       ) : (
         getRecipeReducer.map((recipe) => (
           <div key={recipe.id}>
-            <h4>{recipe.title}</h4>
-            <p>Author: {recipe.author}</p>
-            <ViewRecipeModal recipe={recipe} />
-            <button
-              className="delete-btn"
-              onClick={() => handleDelete(recipe)}
-            >
-              DELETE
-            </button>
+            <RecipeItem recipe={recipe} />
           </div>
         ))
       )}
@@ -58,4 +51,3 @@ function RecipeList() {
 }
 
 export default RecipeList;
-

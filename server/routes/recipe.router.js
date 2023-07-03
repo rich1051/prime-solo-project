@@ -5,7 +5,7 @@ const axios = require("axios");
 const { Pool } = require("pg");
 const router = express.Router();
 
-// get existing recipes from db:
+// get all existing recipes from db:
 router.get("/", (req, res) => {
   const queryText = 'SELECT * FROM "recipe"';
   pool
@@ -19,10 +19,10 @@ router.get("/", (req, res) => {
     });
 });
 
-// get existing recipes from db:
-router.get("/:movieId", (req, res) => {
-  const queryText = 'SELECT * FROM "recipe" WHERE "movie_id" = $1';
-  const values = [req.params.movieId]
+// get existing recipes (movie-specific) from db:
+router.get("/:imdbId", (req, res) => {
+  const queryText = 'SELECT * FROM "recipe" WHERE "imdb_id" = $1';
+  const values = [req.params.movieId];
   pool
     .query(queryText, values)
     .then((result) => {
@@ -54,8 +54,7 @@ router.post("/", (req, res) => {
 router.put("/:id/edit", (req, res) => {
   const recipeId = req.params.id;
   const { favorite } = req.body;
-  const queryText =
-    'UPDATE "recipe" SET "title" = $1, "author" = $2, "backstory" = $3, "ingredients" = $4, "instructions" = $5 WHERE "id" = $6 RETURNING *';
+  const queryText = `UPDATE "recipe" SET "title" = $1, "author" = $2, "backstory" = $3, "ingredients" = $4, "instructions" = $5 WHERE "id" = $6 RETURNING *`;
   const queryValues = [
     title,
     author,
@@ -79,9 +78,8 @@ router.put("/:id/edit", (req, res) => {
 // favorite or unfavorite a recipe in db:
 router.post("/:id/favorite", (req, res) => {
   const recipeId = req.params.id;
-  const userId = req.body.userId
-  const postQuery = `INSERT INTO "favorite_recipe" (
-    "user_id", "recipe_id") VALUES ($1, $2)`;
+  const userId = req.body.userId;
+  const postQuery = `INSERT INTO "favorite_recipe" ("user_id", "recipe_id") VALUES ($1, $2)`;
   const values = [userId, recipeId];
   pool
     .query(postQuery, values)
@@ -97,7 +95,7 @@ router.post("/:id/favorite", (req, res) => {
 
 router.delete("/:id/unfavorite", (req, res) => {
   const recipeId = req.params.id;
-  const userId = req.body.userId
+  const userId = req.body.userId;
   const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "recipe_id" = $2`;
   const values = [userId, recipeId];
   pool
@@ -117,7 +115,8 @@ router.delete("/:id", (req, res) => {
   const recipeId = req.params.id;
 
   // First, alter the foreign key constraint to include cascading deletions
-  const alterConstraintQuery = 'ALTER TABLE "favorite_recipe" DROP CONSTRAINT IF EXISTS favorite_recipe_recipe_id_fkey, ADD CONSTRAINT favorite_recipe_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES "recipe" (id) ON DELETE CASCADE';
+  const alterConstraintQuery =
+    'ALTER TABLE "favorite_recipe" DROP CONSTRAINT IF EXISTS favorite_recipe_recipe_id_fkey, ADD CONSTRAINT favorite_recipe_recipe_id_fkey FOREIGN KEY (recipe_id) REFERENCES "recipe" (id) ON DELETE CASCADE';
 
   // Then, delete the recipe from the "recipe" table
   const deleteRecipeQuery = 'DELETE FROM "recipe" WHERE "id" = $1';

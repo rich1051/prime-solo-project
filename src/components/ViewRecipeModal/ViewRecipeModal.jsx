@@ -70,6 +70,7 @@ function ViewRecipeModal({ recipe }) {
         contentLabel="Add Recipe Modal"
         ariaHideApp={false}
       >
+        <div className="modal-background">
         {/* Modal content */}
         <button className="toggle-btn" onClick={toggleModal}>×</button>
         <br />
@@ -103,6 +104,7 @@ function ViewRecipeModal({ recipe }) {
         <button className="favorite-btn" onClick={handleFavorite}>
           {isFavorite ? "Unfavorite" : "Favorite"}
         </button>
+        </div>
       </Modal>
     </>
   );
