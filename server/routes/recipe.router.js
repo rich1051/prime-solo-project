@@ -5,7 +5,7 @@ const axios = require("axios");
 const { Pool } = require("pg");
 const router = express.Router();
 
-// get all existing recipes from db:
+// get all existing recipes from db (not used but could be later):
 router.get("/", (req, res) => {
   const queryText = 'SELECT * FROM "recipe"';
   pool

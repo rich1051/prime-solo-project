@@ -8,6 +8,7 @@ import addRecipeSaga from './addRecipe.saga';
 import getRecipeSaga from './getRecipe.saga';
 import deleteSaga from './delete.saga';
 import getFavoriteSaga from './getFavorite.saga';
+import editRecipeSaga from './editRecipe.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -27,5 +28,6 @@ export default function* rootSaga() {
     getRecipeSaga(),
     deleteSaga(),
     getFavoriteSaga(),
+    editRecipeSaga(),
   ]);
 }
