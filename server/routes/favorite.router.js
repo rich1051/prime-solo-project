@@ -24,4 +24,41 @@ router.get("/:userId", (req, res) => {
     });
 });
 
+// favorite or unfavorite a recipe in db:
+router.post("/:id/favorite", (req, res) => {
+  const recipeId = req.params.id;
+  const userId = req.body.userId;
+  const postQuery = `INSERT INTO "favorite_recipe" ("user_id", "recipe_id") VALUES ($1, $2)`;
+  const values = [userId, recipeId];
+  pool
+    .query(postQuery, values)
+    .then((response) => {
+      console.log("FAVORITE POST SUCCESS", response);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Issue with the FAVORITE POST", err);
+      res.sendStatus(500);
+    });
+});
+
+router.post("/:id/unfavorite", (req, res) => {
+  const recipeId = req.params.id;
+  const userId = req.body.userId;
+  console.log('RECIPEID is', recipeId)
+  console.log('USERID is', userId)
+  const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "id" = $2`;
+  const values = [userId, recipeId];
+  pool
+    .query(postQuery, values)
+    .then((response) => {
+      console.log("UNFAVORITE DELETE SUCCESS", response);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log("Issue with the UNFAVORITE DELETE", err);
+      res.sendStatus(500);
+    });
+});
+
 module.exports = router;

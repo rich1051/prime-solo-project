@@ -25,12 +25,12 @@ function ViewRecipeModal({ recipe }) {
     try {
       if (isFavorite) {
         // Remove from favorites
-        await axios.post(`/api/recipes/${id}/unfavorite`, {userId: user.id});
+        await axios.post(`/api/favorites/${id}/unfavorite`, {userId: user.id});
         setIsFavorite(false);
         getFavorites();
       } else {
         // Add to favorites
-        await axios.post(`/api/recipes/${id}/favorite`, {userId: user.id});
+        await axios.post(`/api/favorites/${id}/favorite`, {userId: user.id});
         setIsFavorite(true);
       }
     } catch (error) {
