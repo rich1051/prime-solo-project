@@ -11,6 +11,10 @@ function RecipeItem({ recipe }) {
     dispatch({ type: "DELETE_RECIPE", payload: recipe });
   };
 
+  const handleEdit = (recipe) => {
+    dispatch({ type: "UPDATE_RECIPE", payload: recipe });
+  }
+
   return (
     <div className="recipe-item">
       <h4>{recipe.title}</h4>
@@ -19,6 +23,7 @@ function RecipeItem({ recipe }) {
       <button className="delete-btn" onClick={() => handleDelete(recipe)}>
         DELETE
       </button>
+      <button className="edit-btn" onClick={() => handleEdit(recipe)}>EDIT</button>
     </div>
   );
 }

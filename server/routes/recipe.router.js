@@ -93,9 +93,11 @@ router.post("/:id/favorite", (req, res) => {
     });
 });
 
-router.delete("/:id/unfavorite", (req, res) => {
+router.post("/:id/unfavorite", (req, res) => {
   const recipeId = req.params.id;
   const userId = req.body.userId;
+  console.log('RECIPEID is', recipeId)
+  console.log('USERID is', userId)
   const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "recipe_id" = $2`;
   const values = [userId, recipeId];
   pool

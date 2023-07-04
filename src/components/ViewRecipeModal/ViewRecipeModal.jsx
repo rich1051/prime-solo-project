@@ -62,7 +62,7 @@ function ViewRecipeModal({ recipe }) {
 
   return (
     <>
-      <button className="view-btn" onClick={handleView}>View</button>
+      <button className="view-btn" onClick={handleView}>VIEW</button>
 
       <Modal
         isOpen={isModalOpen}
