@@ -98,7 +98,7 @@ router.post("/:id/unfavorite", (req, res) => {
   const userId = req.body.userId;
   console.log('RECIPEID is', recipeId)
   console.log('USERID is', userId)
-  const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "recipe_id" = $2`;
+  const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "id" = $2`;
   const values = [userId, recipeId];
   pool
     .query(postQuery, values)
