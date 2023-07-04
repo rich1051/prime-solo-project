@@ -4,6 +4,7 @@ import "./FavoriteItem.css";
 import { useSelector, useDispatch } from "react-redux";
 
 function FavoriteItem({ recipe }) {
+  console.log('Hello@', recipe);
 
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);

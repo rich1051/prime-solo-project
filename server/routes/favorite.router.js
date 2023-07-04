@@ -9,7 +9,7 @@ const router = express.Router();
 router.get("/:userId", (req, res) => {
   const userId = req.params.userId;
   const values = [userId];
-  const queryText = `SELECT * FROM "recipe" 
+  const queryText = `SELECT recipe.* FROM "recipe" 
     JOIN "favorite_recipe" ON "recipe"."id" = "favorite_recipe"."recipe_id"
     WHERE "favorite_recipe"."user_id" = $1`;
   pool
@@ -47,7 +47,7 @@ router.post("/:id/unfavorite", (req, res) => {
   const userId = req.body.userId;
   console.log('RECIPEID is', recipeId)
   console.log('USERID is', userId)
-  const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "id" = $2`;
+  const postQuery = `DELETE FROM "favorite_recipe" WHERE "user_id" = $1 AND "recipe_id" = $2`;
   const values = [userId, recipeId];
   pool
     .query(postQuery, values)
