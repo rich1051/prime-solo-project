@@ -1,6 +1,6 @@
 import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 import axios from "axios";
-import "./FavoriteItem.css"
+import "./FavoriteItem.css";
 import { useSelector, useDispatch } from "react-redux";
 
 function FavoriteItem({ recipe }) {
