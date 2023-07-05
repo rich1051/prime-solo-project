@@ -1,4 +1,5 @@
 import React from "react";
+import "./AboutPage.css"
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -9,7 +10,7 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
-        <p>
+        <p className="about-description">
           Have you ever hosted a movie night/party but dropped the ball on the
           audience experience? Well, look no further. The Reel Recipes app
           allows users to seamlessly pair their film-viewing experiences with

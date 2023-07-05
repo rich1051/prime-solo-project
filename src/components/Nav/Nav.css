@@ -5,7 +5,7 @@
   align-items: center;
 
   margin: 0 0 30px;
-  background-color: whitesmoke;
+  background-color: white;
   overflow: hidden;
   border-top-right-radius: 12px;
   border-bottom-right-radius: 12px;
@@ -30,7 +30,7 @@
 .navLink {
   display: inline-block;
   color: black;
-  background-color: whitesmoke;
+  background-color: white;
   text-align: center;
   padding: 24px;
   text-decoration: none;

@@ -11,8 +11,6 @@
 }
 
 .submit-btn:hover {
-    padding: 10px;
-    border-radius: 10px;
     border-style: inset;
     border-width: 5px;
     cursor: pointer;
@@ -48,4 +46,24 @@
 
 h2 {
     color: black;
+}
+
+.welcome-banner, .subwelcome-banner {
+    text-align: center;
+}
+
+.welcome-banner {
+    font-size: 2em;
+    font-weight: 800;
+    text-shadow: 3px 1px 1px white;
+}
+
+.subwelcome-banner {
+    font-size: 1.5em;
+    text-shadow: 3px 1px 1px black;
+
+}
+
+.id-banner {
+    text-decoration: underline;
 }

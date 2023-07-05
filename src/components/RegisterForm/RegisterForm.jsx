@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import "./RegisterForm.css"
 
 function RegisterForm() {
   const [username, setUsername] = useState('');
@@ -28,7 +29,7 @@ function RegisterForm() {
         </h3>
       )}
       <div>
-        <label htmlFor="username">
+        <label className='username-text' htmlFor="username">
           Username:
           <input
             type="text"
@@ -40,7 +41,7 @@ function RegisterForm() {
         </label>
       </div>
       <div>
-        <label htmlFor="password">
+        <label className='password-text' htmlFor="password">
           Password:
           <input
             type="password"

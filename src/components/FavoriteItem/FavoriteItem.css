@@ -3,6 +3,7 @@
     border-radius: 10px;
     padding: 10px;
     transition: all 0.8s ease;
+    margin: 10px;
 }
 
 .favorite-item:hover {
