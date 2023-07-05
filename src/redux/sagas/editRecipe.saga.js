@@ -15,7 +15,7 @@ function* editRecipe(action) {
 }
 
 function* editRecipeSaga() {
-  yield takeLatest("UPDATE_RECIPE", editRecipe);
+  yield takeLatest("EDIT_RECIPE", editRecipe);
 }
 
 export default editRecipeSaga;
