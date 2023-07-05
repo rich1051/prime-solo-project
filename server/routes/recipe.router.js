@@ -54,10 +54,10 @@ router.post("/", (req, res) => {
 router.put("/:id/edit", (req, res) => {
   const recipeId = req.params.id;
   console.log("REQ.PARAMS.ID IS:", req.params.id);
-  const { favorite } = req.body;
+  const { title, author, backstory, ingredients, instructions } = req.body;
   console.log("REQ.BODY IS:", req.body);
   const queryText = `UPDATE "recipe" SET "title" = $1, "author" = $2, "backstory" = $3, "ingredients" = $4, "instructions" = $5 WHERE "id" = $6 RETURNING *`;
-  const queryValues = [title, author, backstory, ingredients, instructions];
+  const queryValues = [title, author, backstory, ingredients, instructions, recipeId];
 
   pool
     .query(queryText, queryValues)

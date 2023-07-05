@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 import "./RecipeList.css";
 import RecipeItem from "../RecipeItem/RecipeItem";
 
@@ -28,9 +27,6 @@ function RecipeList({ imdbId }) {
       });
   };
 
-  const handleDelete = (recipe) => {
-    dispatch({ type: "DELETE_RECIPE", payload: recipe });
-  };
 
   return (
     <div>

@@ -3,13 +3,13 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import axios from "axios";
 
-function EditRecipeModal() {
+function EditRecipeModal({recipe}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [backstory, setBackstory] = useState("");
-  const [ingredients, setIngredients] = useState("");
-  const [instructions, setInstructions] = useState("");
+  const [title, setTitle] = useState(recipe.title);
+  const [author, setAuthor] = useState(recipe.author);
+  const [backstory, setBackstory] = useState(recipe.backstory);
+  const [ingredients, setIngredients] = useState(recipe.ingredients);
+  const [instructions, setInstructions] = useState(recipe.instructions);
 
   const dispatch = useDispatch();
 
@@ -17,7 +17,7 @@ function EditRecipeModal() {
     setIsModalOpen(!isModalOpen);
   };
 
-  const handleModalEdit = (recipe) => {
+  const handleModalEdit = () => {
     // Logic to update the recipe
     const updatedRecipe = {
       title,
