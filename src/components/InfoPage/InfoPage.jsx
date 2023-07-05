@@ -1,4 +1,5 @@
 import React from 'react';
+import "./InfoPage.css"
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -7,7 +8,7 @@ import React from 'react';
 
 function InfoPage() {
   return (
-    <div className="container">
+    <div className="info-container">
       <p>This application was made possible using the following tools:</p>
       <li>Node.js</li>
       <li>Express</li>

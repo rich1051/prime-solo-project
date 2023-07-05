@@ -10,6 +10,7 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
+        <h1 className="about-title">What is Reel Recipes?</h1>
         <p className="about-description">
           Have you ever hosted a movie night/party but dropped the ball on the
           audience experience? Well, look no further. The Reel Recipes app

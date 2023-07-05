@@ -1,54 +1,54 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import './LandingPage.css';
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
+import "./LandingPage.css";
 
 // CUSTOM COMPONENTS
-import RegisterForm from '../RegisterForm/RegisterForm';
+import RegisterForm from "../RegisterForm/RegisterForm";
 
 function LandingPage() {
-  const [heading, setHeading] = useState('Welcome');
+  const [heading, setHeading] = useState("Are you ready for your next movie night?");
   const history = useHistory();
 
   const onLogin = (event) => {
-    history.push('/login');
+    history.push("/login");
   };
 
   return (
     <div className="container">
-      <h2>{heading}</h2>
+      <h2 className="heading">{heading}</h2>
 
       <div className="grid">
         <div className="grid-col grid-col_8">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
-            id felis metus. Vestibulum et pulvinar tortor. Morbi pharetra lacus
-            ut ex molestie blandit. Etiam et turpis sit amet risus mollis
-            interdum. Suspendisse et justo vitae metus bibendum fringilla sed
-            sed justo. Aliquam sollicitudin dapibus lectus, vitae consequat odio
-            elementum eget. Praesent efficitur eros vitae nunc interdum, eu
-            interdum justo facilisis. Sed pulvinar nulla ac dignissim efficitur.
-            Quisque eget eros metus. Vestibulum bibendum fringilla nibh a
-            luctus. Duis a sapien metus.
+            Reel Recipes is an innovative application designed for movie
+            enthusiasts and food lovers alike. This unique platform combines the
+            love for cinema and culinary arts by allowing users to create,
+            discover, and share recipes inspired by their favorite movies. With
+            Reel Recipes, users can embark on a gastronomic journey, exploring a
+            wide range of delectable dishes and beverages associated with
+            specific films.
           </p>
 
           <p>
-            Praesent consectetur orci dui, id elementum eros facilisis id. Sed
-            id dolor in augue porttitor faucibus eget sit amet ante. Nunc
-            consectetur placerat pharetra. Aenean gravida ex ut erat commodo, ut
-            finibus metus facilisis. Nullam eget lectus non urna rhoncus
-            accumsan quis id massa. Curabitur sit amet dolor nisl. Proin
-            euismod, augue at condimentum rhoncus, massa lorem semper lacus, sed
-            lobortis augue mi vel felis. Duis ultrices sapien at est convallis
-            congue.
+            The application offers a seamless user experience, empowering
+            individuals to unleash their creativity in the kitchen while
+            connecting with like-minded individuals. Users can create and
+            customize their own recipes, complete with detailed ingredient lists
+            and step-by-step instructions for other users to follow along. They
+            can also add a touch of personal flair by sharing anecdotes or
+            trivia about the movie that inspired the dish.
           </p>
 
           <p>
-            Fusce porta diam ac tortor elementum, ut imperdiet metus volutpat.
-            Suspendisse posuere dapibus maximus. Aliquam vitae felis libero. In
-            vehicula sapien at semper ultrices. Vivamus sed feugiat libero. Sed
-            sagittis neque id diam euismod, ut egestas felis ultricies. Nullam
-            non fermentum mauris. Sed in enim ac turpis faucibus pretium in sit
-            amet nisi.
+            Reel Recipes fosters a vibrant community where users can browse and
+            favorite recipes shared by others. This enables users to discover
+            new culinary delights, engage with other members of the community,
+            and even collaborate on creating thematic menus for movie-themed
+            gatherings or events. Whether it's recreating the iconic spaghetti
+            scene from "Lady and the Tramp" or concocting a magical potion
+            inspired by "Harry Potter," Reel Recipes offers an immersive and
+            interactive experience that brings together the joys of cooking and
+            the magic of the silver screen.
           </p>
         </div>
         <div className="grid-col grid-col_4">

@@ -1,0 +1,18 @@
+.info-container {
+    border-style: solid;
+    border-radius: 10px;
+    padding: 10px;
+    padding-left: 25px;
+    transition: all 0.8s ease;
+    margin: auto;
+    width: 65%;
+    font-size: 1.7em;
+}
+
+.info-container:hover {
+    border-style: solid;
+    border-color: black;
+    background-color: white;
+    color: black;
+    transition: all 0.8s ease;
+}
