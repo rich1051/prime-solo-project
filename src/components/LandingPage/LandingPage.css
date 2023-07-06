@@ -67,7 +67,7 @@ Grid
 .grid-col_8:hover {
   border-style: solid;
   border-color: black;
-  background-color: rgb(156, 120, 255);
+  background-color: rgb(219, 205, 255);
   color: black;
   transition: all 0.8s ease;
 }

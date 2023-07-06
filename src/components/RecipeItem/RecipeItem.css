@@ -1,6 +1,7 @@
 .recipe-item {
     border-style: solid;
-    border-radius: 10px;
+    border-top-right-radius: 90px;
+    border-bottom-right-radius: 90px;
     padding: 10px;
     transition: all 0.3s ease;
     margin: 10px;
@@ -8,7 +9,7 @@
 
 .recipe-item:hover {
     border-width: 6px;
-    background-color: rgb(219, 205, 255);
+    background: linear-gradient(to right, rgb(219, 205, 255), rgba(156, 120, 255, 0));
     color: black;
     transition: all 0.3s ease;
 }

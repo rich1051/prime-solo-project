@@ -42,8 +42,13 @@
     height: 95%;
     width: 95%;
     padding: 10px;
-    border-radius: 10px;
-    background: radial-gradient(rgb(170, 139, 255), rgba(156, 120, 255, 0));
+    border-top-right-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: radial-gradient(rgb(156, 120, 255), rgba(156, 120, 255, 0));
+    border-top: solid 5px rgb(156, 120, 255);
+    border-bottom: solid 5px rgb(156, 120, 255);
 }
 
 .search-result {
