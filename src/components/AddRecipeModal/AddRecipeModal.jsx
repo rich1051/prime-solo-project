@@ -92,7 +92,7 @@ function AddRecipeModal() {
         ariaHideApp={false}
       >
         {/* Modal content */}
-        <form onSubmit={handleModalAdd}>
+        <form className="add-recipe-form" onSubmit={handleModalAdd}>
           <button className="toggle-btn" onClick={toggleModal}>
             ×
           </button>

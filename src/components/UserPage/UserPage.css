@@ -15,7 +15,7 @@
     border-width: 5px;
     cursor: pointer;
     color: black;
-    background-color: goldenrod;
+    background-color: rgb(156, 120, 255);
     transition: all 0.4s ease;
 }
 
@@ -37,6 +37,12 @@
 
 .search-form {
     text-align: center;
+    margin: auto;
+    height: 95%;
+    width: 95%;
+    padding: 10px;
+    border-radius: 10px;
+    background: radial-gradient(rgb(156, 120, 255), rgba(156, 120, 255, 0));
 }
 
 .search-result {
@@ -55,13 +61,10 @@ h2 {
 .welcome-banner {
     font-size: 2em;
     font-weight: 800;
-    text-shadow: 3px 1px 1px white;
 }
 
 .subwelcome-banner {
     font-size: 1.5em;
-    text-shadow: 3px 1px 1px black;
-
 }
 
 .id-banner {

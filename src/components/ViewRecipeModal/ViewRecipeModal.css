@@ -3,7 +3,7 @@
 }
 
 .text {
-    color: white;
+    color: whitesmoke;
     padding-top: 20px;
     margin-bottom: 25px;
 }
@@ -43,7 +43,7 @@ input {
     border-style: outset;
     border-width: 5px;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: darkred;
     transition: all 0.4s ease;
   }
@@ -52,7 +52,7 @@ input {
     border-radius: 10px;
     border-style: inset;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: red;
     transition: all 0.4s ease;
 }
@@ -64,7 +64,7 @@ input {
     border-style: outset;
     border-width: 5px;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: black;
     font-size: 1.1em;
     transition: all 0.4s ease;
@@ -77,12 +77,12 @@ input {
     border-width: 5px;
     cursor: pointer;
     color: black;
-    background-color: goldenrod;
+    background-color: rgb(156, 120, 255);
     transition: all 0.4s ease;
 }
 
 .modal-background {
-    background-color: #a2a2a2;
+    background-color: whitesmoke;
     padding: 15px;
     border-style: solid;
     border-color: black;

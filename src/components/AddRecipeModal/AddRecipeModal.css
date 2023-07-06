@@ -1,10 +1,10 @@
 form {
     margin: auto;
-    background-color: #a2a2a2;
     height: 95%;
     width: 95%;
     padding: 10px;
     border-radius: 10px;
+    background: radial-gradient(rgb(156, 120, 255), rgba(156, 120, 255, 0));
 }
 
 input {
@@ -36,7 +36,7 @@ input {
 }
 
 label {
-    color: white;
+    color: whitesmoke;
 }
 
 .title-input {
@@ -71,7 +71,7 @@ label {
     border-style: outset;
     border-width: 5px;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: darkred;
     transition: all 0.4s ease;
   }
@@ -80,7 +80,7 @@ label {
     border-radius: 10px;
     border-style: inset;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: red;
     transition: all 0.4s ease;
 }

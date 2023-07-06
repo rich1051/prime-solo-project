@@ -9,7 +9,7 @@
 .favorite-item:hover {
     border-style: solid;
     border-color: black;
-    background-color: white;
+    background-color: rgb(219, 205, 255);
     color: black;
     transition: all 0.8s ease;
 }
@@ -21,7 +21,7 @@
     border-style: outset;
     border-width: 5px;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: darkred;
     font-size: 1.1em;
     transition: all 0.4s ease;
@@ -33,7 +33,7 @@
     border-style: inset;
     border-width: 5px;
     cursor: pointer;
-    color: white;
+    color: whitesmoke;
     background-color: red;
     transition: all 0.4s ease;
 }

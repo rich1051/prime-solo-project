@@ -2,7 +2,7 @@
     border-radius: 18px;
     border-style: double;
     border-width: 15px;
-    border-color: whitesmoke;
+    border-color: black;
     margin: 10px;
     height: 400px;
     width: 267px;
@@ -11,7 +11,7 @@
 }
 
 .movie-poster:hover {
-    border-color: goldenrod;
+    border-color: rgb(156, 120, 255);
     transition: all 0.3s ease;
 }
 
@@ -39,4 +39,5 @@
     border-style: outset;
     border-width: 15px;
     transition: all 0.4s ease;
+    color: rgb(156, 120, 255);
 }
