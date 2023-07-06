@@ -26,7 +26,7 @@ function UserPage() {
   return (
     <>
       <div className="container">
-        <p className="id-banner">Your ID is: {user.id}</p>
+        {/* <p className="id-banner">Your ID is: {user.id}</p> */}
         <h2 className="welcome-banner">
           We're glad you're here, {user.username}!
         </h2>
