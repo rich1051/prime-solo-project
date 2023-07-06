@@ -26,12 +26,13 @@
     border-radius: 12px;
     border-style: solid;
     border-color: black;
+    background-color: whitesmoke;
     text-align: center;
     font-size: 1.2em;
 }
 
 .search-bar:hover::placeholder {
-    color: white;
+    color: whitesmoke;
     transition: all 0.5s ease;
 }
 
@@ -42,7 +43,7 @@
     width: 95%;
     padding: 10px;
     border-radius: 10px;
-    background: radial-gradient(rgb(156, 120, 255), rgba(156, 120, 255, 0));
+    background: radial-gradient(rgb(170, 139, 255), rgba(156, 120, 255, 0));
 }
 
 .search-result {
@@ -59,12 +60,13 @@ h2 {
 }
 
 .welcome-banner {
-    font-size: 2em;
+    font-size: 2.2em;
     font-weight: 800;
 }
 
 .subwelcome-banner {
     font-size: 1.5em;
+    text-decoration: underline;
 }
 
 .id-banner {

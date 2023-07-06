@@ -2,17 +2,15 @@
     border-style: solid;
     border-radius: 10px;
     padding: 10px;
-    transition: all 0.8s ease;
+    transition: all 0.3s ease;
     margin: 10px;
-    background-color: whitesmoke;
 }
 
 .recipe-item:hover {
-    border-style: solid;
-    border-color: black;
+    border-width: 6px;
     background-color: rgb(219, 205, 255);
     color: black;
-    transition: all 0.8s ease;
+    transition: all 0.3s ease;
 }
 
 .delete-btn {

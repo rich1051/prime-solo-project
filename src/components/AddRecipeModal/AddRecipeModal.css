@@ -4,7 +4,6 @@ form {
     width: 95%;
     padding: 10px;
     border-radius: 10px;
-    background: radial-gradient(rgb(156, 120, 255), rgba(156, 120, 255, 0));
 }
 
 input {
