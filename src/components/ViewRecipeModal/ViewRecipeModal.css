@@ -4,6 +4,8 @@
 
 .text {
     color: white;
+    padding-top: 20px;
+    margin-bottom: 25px;
 }
 
 input {

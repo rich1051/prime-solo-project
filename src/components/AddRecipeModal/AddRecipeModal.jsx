@@ -1,13 +1,14 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import "./AddRecipeModal.css"
+import "./AddRecipeModal.css";
 
 function AddRecipeModal() {
+  const user = useSelector((store) => store.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
+  const [author, setAuthor] = useState(user.username);
   const [backstory, setBackstory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
@@ -80,9 +81,11 @@ function AddRecipeModal() {
 
   return (
     <>
-      <button className="add-btn" onClick={handleAdd}>Add Recipe</button>
+      <button className="add-btn" onClick={handleAdd}>
+        Add Recipe
+      </button>
 
-      <Modal 
+      <Modal
         isOpen={isModalOpen}
         onRequestClose={toggleModal}
         contentLabel="Add Recipe Modal"
@@ -90,12 +93,14 @@ function AddRecipeModal() {
       >
         {/* Modal content */}
         <form onSubmit={handleModalAdd}>
-          <button className="toggle-btn" onClick={toggleModal}>×</button>
+          <button className="toggle-btn" onClick={toggleModal}>
+            ×
+          </button>
           <br />
           <label>
             Title:
             <input
-            className="title-input"
+              className="title-input"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
@@ -104,12 +109,7 @@ function AddRecipeModal() {
           <br />
           <label>
             Author:
-            <input
-            className="author-input"
-              type="text"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
+            <p className="author-input">{author}</p>
           </label>
           <br />
           <label>
@@ -139,7 +139,9 @@ function AddRecipeModal() {
             />
           </label>
           <br />
-          <button className="add-btn" type="submit">Add Recipe</button>
+          <button className="add-btn" type="submit">
+            Add Recipe
+          </button>
         </form>
       </Modal>
     </>

@@ -47,6 +47,7 @@
     border-radius: 10px;
     padding: 25px;
     transition: all 0.8s ease;
+    font-size: 1.4em;
   }
 
   .details-description:hover {

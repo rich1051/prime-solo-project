@@ -1,9 +1,10 @@
 import Modal from "react-modal";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-function EditRecipeModal({recipe}) {
+function EditRecipeModal({ recipe }) {
+  const user = useSelector((store) => store.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState(recipe.title);
   const [author, setAuthor] = useState(recipe.author);
@@ -52,8 +53,11 @@ function EditRecipeModal({recipe}) {
     setInstructions("");
   };
 
+  // only allow username that matches author name exactly to edit the recipe:
   const handleEdit = () => {
-    setIsModalOpen(true);
+    if (user.username === recipe.author) {
+      setIsModalOpen(true);
+    }
   };
 
   // THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
@@ -75,9 +79,12 @@ function EditRecipeModal({recipe}) {
 
   return (
     <>
-      <button className="edit-btn" onClick={handleEdit}>
-        EDIT
-      </button>
+      {/* conditionally render button only to user that created recipe: */}
+      {user.username === recipe.author && (
+        <button className="edit-btn" onClick={handleEdit}>
+          EDIT
+        </button>
+      )}
 
       <Modal
         isOpen={isModalOpen}
@@ -103,12 +110,7 @@ function EditRecipeModal({recipe}) {
           <br />
           <label>
             Author:
-            <input
-              className="author-input"
-              type="text"
-              value={author}
-              onChange={(e) => setAuthor(e.target.value)}
-            />
+            <p className="author-input">{author}</p>
           </label>
           <br />
           <label>
