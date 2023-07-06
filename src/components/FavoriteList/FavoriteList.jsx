@@ -36,7 +36,8 @@ function FavoriteList() {
   };
 
   return (
-    <div>
+    <div> 
+      <h3>My Favorite Recipes:</h3>
       {getFavoriteReducer.length === 0 ? (
         <p>Oh no! You don't have any favorite recipes!</p>
       ) : (
