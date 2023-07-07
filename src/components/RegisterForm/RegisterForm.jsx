@@ -34,6 +34,7 @@ function RegisterForm() {
           <input
             type="text"
             name="username"
+            autoComplete='off'
             value={username}
             required
             onChange={(event) => setUsername(event.target.value)}
