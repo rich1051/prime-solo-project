@@ -18,7 +18,7 @@ function RecipeList() {
 
   const getRecipes = () => {
     axios
-      .get(`/api/recipes/${imdbID}`)
+      .get(`/api/recipes/movie/${imdbID}`)
       .then((response) => {
         dispatch({
           type: "SET_RECIPES",

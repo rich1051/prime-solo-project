@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import "./FavoriteList.css"
 import FavoriteItem from "../FavoriteItem/FavoriteItem";
 
 function FavoriteList() {

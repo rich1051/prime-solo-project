@@ -68,7 +68,7 @@ function AddRecipeModal() {
   // THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
   const getRecipes = () => {
     axios
-      .get(`/api/recipes/${imdbID}`)
+      .get(`/api/recipes/movie/${imdbID}`)
       .then((response) => {
         // Dispatch an action to update the state with the fetched recipes
         dispatch({

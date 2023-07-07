@@ -21,6 +21,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import DetailsPage from '../DetailsPage/DetailsPage';
 import FavoriteList from '../FavoriteList/FavoriteList';
+import MyRecipeList from '../MyRecipeList/MyRecipeList';
 
 import './App.css';
 
@@ -76,6 +77,14 @@ function App() {
             path="/details/:imdbID"
           >
             <DetailsPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows DetailsPage else shows LoginPage
+            exact
+            path="/personal"
+          >
+            <MyRecipeList />
           </ProtectedRoute>
 
           <ProtectedRoute

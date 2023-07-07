@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
-function EditRecipeModal({ recipe }) {
+function EditRecipeModal({ recipe, onEdit = () => {} }) {
   const user = useSelector((store) => store.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState(recipe.title);
@@ -33,7 +33,7 @@ function EditRecipeModal({ recipe }) {
     axios
       .put(`/api/recipes/${recipe.id}/edit`, updatedRecipe)
       .then((response) => {
-        getRecipes();
+        onEdit();
         // Handle the successful response if needed
         console.log("Recipe updated:", response.data);
         // Perform any additional actions after the recipe is updated
@@ -54,34 +54,34 @@ function EditRecipeModal({ recipe }) {
   };
 
   // only allow username that matches author name exactly to edit the recipe:
-  const handleEdit = () => {
+  const handleClickEdit = () => {
     if (user.username === recipe.author) {
       setIsModalOpen(true);
     }
   };
 
   // THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
-  const getRecipes = () => {
-    axios
-      .get("/api/recipes")
-      .then((response) => {
-        // Dispatch an action to update the state with the fetched recipes
-        dispatch({
-          type: "SET_RECIPES",
-          payload: response.data,
-        });
-        console.log("Fetched recipes:", response.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching recipes:", error);
-      });
-  };
+  // const getRecipes = () => {
+  //   axios
+  //     .get("/api/recipes")
+  //     .then((response) => {
+  //       // Dispatch an action to update the state with the fetched recipes
+  //       dispatch({
+  //         type: "SET_RECIPES",
+  //         payload: response.data,
+  //       });
+  //       console.log("Fetched recipes:", response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log("Error fetching recipes:", error);
+  //     });
+  // };
 
   return (
     <>
       {/* conditionally render button only to user that created recipe: */}
       {user.username === recipe.author && (
-        <button className="edit-btn" onClick={handleEdit}>
+        <button className="edit-btn" onClick={handleClickEdit}>
           EDIT
         </button>
       )}

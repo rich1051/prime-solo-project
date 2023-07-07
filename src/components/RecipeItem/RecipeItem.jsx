@@ -13,6 +13,22 @@ function RecipeItem({ recipe }) {
     dispatch({ type: "DELETE_RECIPE", payload: recipe });
   };
 
+  const getRecipes = () => {
+    axios
+      .get("/api/recipes")
+      .then((response) => {
+        // Dispatch an action to update the state with the fetched recipes
+        dispatch({
+          type: "SET_RECIPES",
+          payload: response.data,
+        });
+        console.log("Fetched recipes:", response.data);
+      })
+      .catch((error) => {
+        console.log("Error fetching recipes:", error);
+      });
+  };
+
   return (
     <div className="recipe-item">
       <h4>{recipe.title}</h4>
@@ -24,7 +40,7 @@ function RecipeItem({ recipe }) {
         DELETE
       </button>
       )}
-      <EditRecipeModal recipe={recipe} />
+      <EditRecipeModal recipe={recipe} onEdit = {getRecipes} />
     </div>
   );
 }
