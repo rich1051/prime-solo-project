@@ -6,12 +6,15 @@ import "./AddRecipeModal.css";
 
 function AddRecipeModal() {
   const user = useSelector((store) => store.user);
+  const detailsReducer = useSelector ((store) => store.detailsReducer)
+  const imdbID = detailsReducer.imdbID
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState(user.username);
   const [backstory, setBackstory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+
+  const author = user.username;
 
   const dispatch = useDispatch();
 
@@ -28,6 +31,7 @@ function AddRecipeModal() {
       backstory,
       ingredients,
       instructions,
+      imdbID
     };
     // Dispatch an action to update the state with the new recipe
     dispatch({
@@ -52,7 +56,6 @@ function AddRecipeModal() {
     setIsModalOpen(false);
     // Reset the form fields
     setTitle("");
-    setAuthor("");
     setBackstory("");
     setIngredients("");
     setInstructions("");
@@ -65,7 +68,7 @@ function AddRecipeModal() {
   // THIS GET REQUEST IS CALLED ONLY AFTER A NEW RECIPE IS ADDED TO THE DB TO UPDATE LIST:
   const getRecipes = () => {
     axios
-      .get("/api/recipes")
+      .get(`/api/recipes/${imdbID}`)
       .then((response) => {
         // Dispatch an action to update the state with the fetched recipes
         dispatch({

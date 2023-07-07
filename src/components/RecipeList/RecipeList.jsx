@@ -4,18 +4,21 @@ import axios from "axios";
 import "./RecipeList.css";
 import RecipeItem from "../RecipeItem/RecipeItem";
 
-function RecipeList({ imdbId }) {
+function RecipeList() {
   const getRecipeReducer = useSelector((store) => store.getRecipeReducer);
+  const detailsReducer = useSelector((store) => store.detailsReducer)
   const dispatch = useDispatch();
 
+  const imdbID = detailsReducer.imdbID 
+  
   useEffect(() => {
     // Fetch recipes when the component mounts
     getRecipes();
-  }, [imdbId]);
+  }, [imdbID]);
 
   const getRecipes = () => {
     axios
-      .get(`/api/recipes/`)
+      .get(`/api/recipes/${imdbID}`)
       .then((response) => {
         dispatch({
           type: "SET_RECIPES",

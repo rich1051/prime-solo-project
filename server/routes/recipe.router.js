@@ -20,9 +20,9 @@ router.get("/", (req, res) => {
 });
 
 // get existing recipes (movie-specific) from db:
-router.get("/:imdbId", (req, res) => {
+router.get("/:imdbID", (req, res) => {
   const queryText = 'SELECT * FROM "recipe" WHERE "imdb_id" = $1';
-  const values = [req.params.movieId];
+  const values = [req.params.imdbID];
   pool
     .query(queryText, values)
     .then((result) => {
@@ -37,10 +37,10 @@ router.get("/:imdbId", (req, res) => {
 // post new recipe to db:
 router.post("/", (req, res) => {
   console.log("POST RECEIVED LETS GOOOOOOOOOO");
-  const { title, author, backstory, ingredients, instructions } = req.body;
-  const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions") VALUES ($1, $2, $3, $4, $5) RETURNING *`;
+  const { title, author, backstory, ingredients, instructions, imdbID } = req.body;
+  const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions", "imdb_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
   pool
-    .query(queryText, [title, author, backstory, ingredients, instructions])
+    .query(queryText, [title, author, backstory, ingredients, instructions, imdbID])
     .then((result) => {
       res.send(result.rows[0]);
     })
