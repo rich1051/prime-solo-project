@@ -2,6 +2,7 @@ import "./RecipeItem.css";
 import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 import { useDispatch, useSelector } from "react-redux";
 import EditRecipeModal from "../EditRecipeModal/EditRecipeModal";
+import axios from "axios";
 
 function RecipeItem({ recipe }) {
   console.log("RECIPE IS:", recipe);

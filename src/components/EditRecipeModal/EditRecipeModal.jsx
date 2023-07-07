@@ -7,10 +7,10 @@ function EditRecipeModal({ recipe, onEdit = () => {} }) {
   const user = useSelector((store) => store.user);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState(recipe.title);
-  const [author, setAuthor] = useState(recipe.author);
   const [backstory, setBackstory] = useState(recipe.backstory);
   const [ingredients, setIngredients] = useState(recipe.ingredients);
   const [instructions, setInstructions] = useState(recipe.instructions);
+  const author = user.username
 
   const dispatch = useDispatch();
 
@@ -47,7 +47,6 @@ function EditRecipeModal({ recipe, onEdit = () => {} }) {
     setIsModalOpen(false);
     // Reset the form fields
     setTitle("");
-    setAuthor("");
     setBackstory("");
     setIngredients("");
     setInstructions("");
