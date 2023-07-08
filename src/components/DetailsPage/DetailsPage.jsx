@@ -1,15 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
 import AddRecipeModal from "../AddRecipeModal/AddRecipeModal";
 import RecipeList from "../RecipeList/RecipeList";
 import './DetailsPage.css'
+import axios from "axios";
 
 function DetailsPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const detailsReducer = useSelector((store) => store.detailsReducer);
   const params = useParams();
+  const [recipes, setRecipes] = useState([]);
+
+  const imdbID = detailsReducer.imdbID 
+  
+  useEffect(() => {
+    // Fetch recipes when the component mounts
+    getRecipes();
+  }, [imdbID]);
+
+  const getRecipes = () => {
+    console.log('GETRECIPES IS WORKING')
+    axios
+      .get(`/api/recipes/movie/${imdbID}`)
+      .then((response) => {
+        setRecipes(response.data)
+      })
+      .catch((error) => {
+        console.log("Error fetching recipes:", error);
+      });
+  };
 
   const handleBack = () => {
     history.push("/");
@@ -55,8 +76,8 @@ function DetailsPage() {
         </div>
         <br />
       </div>
-      <AddRecipeModal />
-      <RecipeList />
+      <AddRecipeModal refetch={getRecipes} />
+      <RecipeList recipes={recipes} getRecipes={getRecipes}/>
       <br />
       <button className="back-btn" onClick={handleBack}>Back</button>
     </>

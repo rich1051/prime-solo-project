@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./AddRecipeModal.css";
 
-function AddRecipeModal() {
+function AddRecipeModal( {refetch} ) {
   const user = useSelector((store) => store.user);
   const detailsReducer = useSelector ((store) => store.detailsReducer)
   const imdbID = detailsReducer.imdbID

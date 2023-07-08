@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./RecipeList.css";
@@ -6,6 +6,7 @@ import RecipeItem from "../RecipeItem/RecipeItem";
 
 function RecipeList() {
   const getRecipeReducer = useSelector((store) => store.getRecipeReducer);
+  const recipes = getRecipeReducer;
   const detailsReducer = useSelector((store) => store.detailsReducer)
   const dispatch = useDispatch();
 
@@ -17,6 +18,7 @@ function RecipeList() {
   }, [imdbID]);
 
   const getRecipes = () => {
+    console.log('GETRECIPES IS WORKING')
     axios
       .get(`/api/recipes/movie/${imdbID}`)
       .then((response) => {
@@ -30,18 +32,22 @@ function RecipeList() {
       });
   };
 
+  const handleDelete = async (recipe) => {
+    await axios.delete(`/api/recipes/${recipe.id}`)
+    getRecipes();
+  };
 
   return (
     <div>
-      {getRecipeReducer.length === 0 ? (
+      {recipes.length === 0 ? (
         <div>
           <p>Oh no! There are no recipes created yet!</p>
           <p>Click "Add Recipe" and be the first one!</p>
         </div>
       ) : (
-        getRecipeReducer.map((recipe) => (
+        recipes.map((recipe) => (
           <div key={recipe.id}>
-            <RecipeItem recipe={recipe} />
+            <RecipeItem recipe={recipe} handleDelete={handleDelete} getRecipes={getRecipes} />
           </div>
         ))
       )}

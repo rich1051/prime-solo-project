@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 
@@ -11,8 +11,14 @@ function EditRecipeModal({ recipe, onEdit = () => {} }) {
   const [ingredients, setIngredients] = useState(recipe.ingredients);
   const [instructions, setInstructions] = useState(recipe.instructions);
   const author = user.username
-
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    setTitle(recipe.title);
+    setBackstory(recipe.backstory);
+    setIngredients(recipe.ingredients);
+    setInstructions(recipe.ingredients);
+  }, [recipe]);
 
   const toggleModal = () => {
     setIsModalOpen(!isModalOpen);
@@ -45,11 +51,6 @@ function EditRecipeModal({ recipe, onEdit = () => {} }) {
 
     // Close the modal after adding the recipe
     setIsModalOpen(false);
-    // Reset the form fields
-    setTitle("");
-    setBackstory("");
-    setIngredients("");
-    setInstructions("");
   };
 
   // only allow username that matches author name exactly to edit the recipe:

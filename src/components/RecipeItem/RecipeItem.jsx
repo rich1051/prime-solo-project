@@ -4,31 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import EditRecipeModal from "../EditRecipeModal/EditRecipeModal";
 import axios from "axios";
 
-function RecipeItem({ recipe }) {
+function RecipeItem({ recipe, handleDelete, getRecipes }) {
   console.log("RECIPE IS:", recipe);
   const user = useSelector((store) => store.user);
 
   const dispatch = useDispatch();
-
-  const handleDelete = (recipe) => {
-    dispatch({ type: "DELETE_RECIPE", payload: recipe });
-  };
-
-  const getRecipes = () => {
-    axios
-      .get("/api/recipes")
-      .then((response) => {
-        // Dispatch an action to update the state with the fetched recipes
-        dispatch({
-          type: "SET_RECIPES",
-          payload: response.data,
-        });
-        console.log("Fetched recipes:", response.data);
-      })
-      .catch((error) => {
-        console.log("Error fetching recipes:", error);
-      });
-  };
 
   return (
     <div className="recipe-item">
