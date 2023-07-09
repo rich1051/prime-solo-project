@@ -102,45 +102,45 @@ function AddRecipeModal( {refetch} ) {
           <br />
           <label>
             Title:
+          </label>
             <input
               className="title-input"
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
             />
-          </label>
           <br />
           <label>
             Author:
-            <p className="author-input">{author}</p>
           </label>
+            <p className="author-input">{author}</p>
           <br />
           <label>
             Backstory:
+          </label>
             <input
               className="backstory-input"
               value={backstory}
               onChange={(e) => setBackstory(e.target.value)}
             />
-          </label>
           <br />
           <label>
             Ingredients:
+          </label>
             <input
               className="ingredients-input"
               value={ingredients}
               onChange={(e) => setIngredients(e.target.value)}
             />
-          </label>
           <br />
           <label>
             Instructions:
+          </label>
             <input
               className="instructions-input"
               value={instructions}
               onChange={(e) => setInstructions(e.target.value)}
             />
-          </label>
           <br />
           <button className="add-btn" type="submit">
             Add Recipe
