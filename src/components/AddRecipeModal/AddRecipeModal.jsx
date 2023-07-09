@@ -18,10 +18,16 @@ function AddRecipeModal({ refetch }) {
   const handleKeydown = useCallback((event) => {
     console.log("key hit!");
     if (event.keyCode === 192) {
-      setTitle("a");
-      setBackstory("a");
-      setIngredients("a");
-      setInstructions("a");
+      setTitle("Hermione Granger's Pumpkin Pasties");
+      setBackstory(
+        "In the magical world of Harry Potter, Pumpkin Pasties are a delectable treat enjoyed by Hogwarts students aboard the Hogwarts Express. Inspired by Hermione Granger's love for knowledge and her exceptional baking skills, this recipe brings the enchanting taste of Pumpkin Pasties into your own kitchen. Embark on a culinary adventure with Hermione Granger's Pumpkin Pasties and experience the flavors of the Wizarding World."
+      );
+      setIngredients(
+        "For the Pastry Dough: 2 cups of all-purpose flour, 1/2 teaspoon of salt, 1/2 cup of unsalted butter, cold and cut into small cubes, 1/4 cup of cold water. For the Pumpkin Filling: 1 cup of pumpkin puree (canned or homemade), 1/4 cup of granulated sugar, 1/2 teaspoon of ground cinnamon, 1/4 teaspoon of ground nutmeg, 1/4 teaspoon of ground cloves, 1/4 teaspoon of ground ginger, 1/4 teaspoon of vanilla extract. For the Glaze: 1/2 cup of powdered sugar, 1 tablespoon of milk, 1/4 teaspoon of vanilla extract"
+      );
+      setInstructions(
+        "Preheat your oven to 375°F (190°C) and line a baking sheet with parchment paper. In a large mixing bowl, whisk together the flour and salt. Add the cold cubed butter and use a pastry cutter or your fingers to cut the butter into the flour until the mixture resembles coarse crumbs. Gradually add the cold water, a tablespoon at a time, mixing with a fork until the dough comes together. Be careful not to overmix. If needed, add more water, but only a little at a time. Transfer the dough to a lightly floured surface and gently knead it a few times until it forms a smooth ball. Wrap the dough in plastic wrap and refrigerate for 30 minutes. While the dough is chilling, prepare the pumpkin filling. In a mixing bowl, combine the pumpkin puree, granulated sugar, ground cinnamon, ground nutmeg, ground cloves, ground ginger, and vanilla extract. Mix well until all the ingredients are thoroughly combined. On a floured surface, roll out the chilled dough to a thickness of about 1/8 inch. Use a round cookie cutter or a glass to cut out circles with a diameter of approximately 4-5 inches. Place a spoonful of the pumpkin filling onto one half of each dough circle, leaving a small border around the edges. Fold the dough over the filling to create a half-moon shape. Press the edges together firmly and use a fork to crimp and seal the edges. Place the assembled pasties on the prepared baking sheet. Using a sharp knife, make a few small slits on the top of each pasty to allow steam to escape while baking. Bake the Pumpkin Pasties in the preheated oven for about 20-25 minutes or until they are golden brown. While the pasties are cooling, prepare the glaze. In a small bowl, whisk together the powdered sugar, milk, and vanilla extract until smooth and well combined. Once the pasties have cooled slightly, drizzle the glaze over the top of each pasty. Allow the glaze to set before serving. Pumpkin Pasties can be enjoyed warm or at room temperature. Enjoy the magical flavors of Hermione Granger's Pumpkin Pasties, and let your taste buds be transported to the wizarding world of Harry Potter. Note: These pasties can be stored in an airtight container for up to 3 days. Now, relish in the delight of Hermione Granger's Pumpkin Pasties, perfect for a magical snack or a Harry Potter-themed gathering. Embrace the spirit of adventure and enchantment as you savor the delicious combination of flaky pastry and spiced pumpkin filling."
+      );
     }
   }, []);
 
