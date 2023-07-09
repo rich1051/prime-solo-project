@@ -52,10 +52,18 @@ router.get("/movie/:imdbID", (req, res) => {
 // post new recipe to db:
 router.post("/", (req, res) => {
   console.log("POST RECEIVED LETS GOOOOOOOOOO");
-  const { title, author, backstory, ingredients, instructions, imdbID } = req.body;
+  const { title, author, backstory, ingredients, instructions, imdbID } =
+    req.body;
   const queryText = `INSERT INTO "recipe" ("title", "author", "backstory", "ingredients", "instructions", "imdb_id") VALUES ($1, $2, $3, $4, $5, $6) RETURNING *`;
   pool
-    .query(queryText, [title, author, backstory, ingredients, instructions, imdbID])
+    .query(queryText, [
+      title,
+      author,
+      backstory,
+      ingredients,
+      instructions,
+      imdbID,
+    ])
     .then((result) => {
       res.send(result.rows[0]);
     })
@@ -72,7 +80,14 @@ router.put("/:id/edit", (req, res) => {
   const { title, author, backstory, ingredients, instructions } = req.body;
   console.log("REQ.BODY IS:", req.body);
   const queryText = `UPDATE "recipe" SET "title" = $1, "author" = $2, "backstory" = $3, "ingredients" = $4, "instructions" = $5 WHERE "id" = $6 RETURNING *`;
-  const queryValues = [title, author, backstory, ingredients, instructions, recipeId];
+  const queryValues = [
+    title,
+    author,
+    backstory,
+    ingredients,
+    instructions,
+    recipeId,
+  ];
 
   pool
     .query(queryText, queryValues)

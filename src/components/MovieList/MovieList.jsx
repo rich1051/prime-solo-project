@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import MovieItem from "../MovieItem/MovieItem";
-import "./MovieList.css"
+import "./MovieList.css";
 
 function MovieList() {
   const movieListReducer = useSelector((store) => store.movieListReducer);

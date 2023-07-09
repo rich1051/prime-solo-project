@@ -8,7 +8,6 @@ function FavoriteList() {
   const getFavoriteReducer = useSelector((store) => store.getFavoriteReducer);
   const user = useSelector((store) => store.user);
 
-
   console.log("getFavoriteReducer is:", getFavoriteReducer);
 
   useEffect(() => {
@@ -35,14 +34,14 @@ function FavoriteList() {
   };
 
   return (
-    <div> 
+    <div>
       <h3>My Favorite Recipes:</h3>
       {getFavoriteReducer.length === 0 ? (
         <p>Oh no! You don't have any favorite recipes!</p>
       ) : (
         getFavoriteReducer.map((recipe) => (
           <div key={recipe.id}>
-            <FavoriteItem recipe = {recipe} />
+            <FavoriteItem recipe={recipe} />
           </div>
         ))
       )}

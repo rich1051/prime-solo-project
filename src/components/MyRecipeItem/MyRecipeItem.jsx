@@ -2,8 +2,6 @@ import ViewRecipeModal from "../ViewRecipeModal/ViewRecipeModal";
 import EditRecipeModal from "../EditRecipeModal/EditRecipeModal";
 
 function MyRecipeItem({ recipe, handleDelete, onEdit }) {
-
-
   return (
     <div className="recipe-item">
       <h4>{recipe.title}</h4>

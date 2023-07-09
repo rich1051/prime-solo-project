@@ -4,7 +4,7 @@ import "./FavoriteItem.css";
 import { useSelector, useDispatch } from "react-redux";
 
 function FavoriteItem({ recipe }) {
-  console.log('Hello@', recipe);
+  console.log("Hello@", recipe);
 
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user);
@@ -12,7 +12,9 @@ function FavoriteItem({ recipe }) {
   const handleRemove = async (recipeId) => {
     try {
       // Update the favorite status in the database
-      await axios.post(`/api/favorites/${recipeId}/unfavorite`, {userId: user.id});
+      await axios.post(`/api/favorites/${recipeId}/unfavorite`, {
+        userId: user.id,
+      });
       getFavorites();
     } catch (error) {
       console.error("Error updating recipe favorite status:", error);
@@ -39,9 +41,11 @@ function FavoriteItem({ recipe }) {
   return (
     <div className="favorite-item">
       <h4>{recipe.title}</h4>
-            <p>Author: {recipe.author}</p>
-            <ViewRecipeModal recipe={recipe} />
-            <button className="remove-btn" onClick={() => handleRemove(recipe.id)}>Remove</button>
+      <p>Author: {recipe.author}</p>
+      <ViewRecipeModal recipe={recipe} />
+      <button className="remove-btn" onClick={() => handleRemove(recipe.id)}>
+        Remove
+      </button>
     </div>
   );
 }

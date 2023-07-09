@@ -6,7 +6,9 @@ import "./LandingPage.css";
 import RegisterForm from "../RegisterForm/RegisterForm";
 
 function LandingPage() {
-  const [heading, setHeading] = useState("Are you ready for your next movie night?");
+  const [heading, setHeading] = useState(
+    "Are you ready for your next movie night?"
+  );
   const history = useHistory();
 
   const onLogin = (event) => {

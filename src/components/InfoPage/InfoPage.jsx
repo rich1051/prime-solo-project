@@ -1,5 +1,5 @@
-import React from 'react';
-import "./InfoPage.css"
+import React from "react";
+import "./InfoPage.css";
 
 // This is one of our simplest components
 // It doesn't have local state
@@ -20,7 +20,10 @@ function InfoPage() {
       <li>Material UI</li>
       <li>The OMDb API</li>
       <br></br>
-      <p>A special thank you to all that have contributed to the success of this application before, during, and after its development!</p>
+      <p>
+        A special thank you to all that have contributed to the success of this
+        application before, during, and after its development!
+      </p>
     </div>
   );
 }

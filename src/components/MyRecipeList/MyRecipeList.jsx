@@ -7,7 +7,6 @@ function MyRecipeList() {
   const user = useSelector((store) => store.user);
   const [myRecipes, setMyRecipes] = useState([]);
   const dispatch = useDispatch();
-  
 
   useEffect(() => {
     // Fetch recipes when the component mounts
@@ -17,7 +16,9 @@ function MyRecipeList() {
   // THIS GET REQUEST IS CALLED FOR PERSONAL RECIPES ONLY:
   const getMyRecipes = async () => {
     try {
-      const response = await axios.get(`/api/recipes/personal/${user.username}`);
+      const response = await axios.get(
+        `/api/recipes/personal/${user.username}`
+      );
       console.log("response is:", response);
       setMyRecipes(response.data);
       console.log("response.data is:", response.data);
@@ -27,7 +28,7 @@ function MyRecipeList() {
   };
 
   const handleDelete = async (recipe) => {
-    await axios.delete(`/api/recipes/${recipe.id}`)
+    await axios.delete(`/api/recipes/${recipe.id}`);
     getMyRecipes();
   };
 
@@ -39,7 +40,11 @@ function MyRecipeList() {
       ) : (
         myRecipes.map((recipe) => (
           <div key={recipe.id}>
-            <MyRecipeItem recipe={recipe} handleDelete = {handleDelete} onEdit={getMyRecipes} />
+            <MyRecipeItem
+              recipe={recipe}
+              handleDelete={handleDelete}
+              onEdit={getMyRecipes}
+            />
           </div>
         ))
       )}

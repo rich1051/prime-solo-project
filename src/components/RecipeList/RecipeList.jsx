@@ -7,18 +7,18 @@ import RecipeItem from "../RecipeItem/RecipeItem";
 function RecipeList() {
   const getRecipeReducer = useSelector((store) => store.getRecipeReducer);
   const recipes = getRecipeReducer;
-  const detailsReducer = useSelector((store) => store.detailsReducer)
+  const detailsReducer = useSelector((store) => store.detailsReducer);
   const dispatch = useDispatch();
 
-  const imdbID = detailsReducer.imdbID 
-  
+  const imdbID = detailsReducer.imdbID;
+
   useEffect(() => {
     // Fetch recipes when the component mounts
     getRecipes();
   }, [imdbID]);
 
   const getRecipes = () => {
-    console.log('GETRECIPES IS WORKING')
+    console.log("GETRECIPES IS WORKING");
     axios
       .get(`/api/recipes/movie/${imdbID}`)
       .then((response) => {
@@ -33,7 +33,7 @@ function RecipeList() {
   };
 
   const handleDelete = async (recipe) => {
-    await axios.delete(`/api/recipes/${recipe.id}`)
+    await axios.delete(`/api/recipes/${recipe.id}`);
     getRecipes();
   };
 
@@ -47,7 +47,11 @@ function RecipeList() {
       ) : (
         recipes.map((recipe) => (
           <div key={recipe.id}>
-            <RecipeItem recipe={recipe} handleDelete={handleDelete} getRecipes={getRecipes} />
+            <RecipeItem
+              recipe={recipe}
+              handleDelete={handleDelete}
+              getRecipes={getRecipes}
+            />
           </div>
         ))
       )}

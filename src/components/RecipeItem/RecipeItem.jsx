@@ -15,13 +15,13 @@ function RecipeItem({ recipe, handleDelete, getRecipes }) {
       <h4>{recipe.title}</h4>
       <p>Author: {recipe.author}</p>
       <ViewRecipeModal recipe={recipe} />
-{/* conditionally render button only to user that made the recipe: */}
+      {/* conditionally render button only to user that made the recipe: */}
       {user.username === recipe.author && (
-      <button className="delete-btn" onClick={() => handleDelete(recipe)}>
-        DELETE
-      </button>
+        <button className="delete-btn" onClick={() => handleDelete(recipe)}>
+          DELETE
+        </button>
       )}
-      <EditRecipeModal recipe={recipe} onEdit = {getRecipes} />
+      <EditRecipeModal recipe={recipe} onEdit={getRecipes} />
     </div>
   );
 }

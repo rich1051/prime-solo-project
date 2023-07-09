@@ -2,16 +2,16 @@ import { useState } from "react";
 import Modal from "react-modal";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
-import './ViewRecipeModal.css'
+import "./ViewRecipeModal.css";
 
 function ViewRecipeModal({ recipe }) {
-
   const user = useSelector((store) => store.user);
-  console.log(user)
+  console.log(user);
 
   const dispatch = useDispatch();
-  
-  const { id, title, author, backstory, ingredients, instructions, favorite } = recipe;
+
+  const { id, title, author, backstory, ingredients, instructions, favorite } =
+    recipe;
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(favorite);
@@ -25,12 +25,14 @@ function ViewRecipeModal({ recipe }) {
     try {
       if (isFavorite) {
         // Remove from favorites
-        await axios.post(`/api/favorites/${id}/unfavorite`, {userId: user.id});
+        await axios.post(`/api/favorites/${id}/unfavorite`, {
+          userId: user.id,
+        });
         setIsFavorite(false);
         getFavorites();
       } else {
         // Add to favorites
-        await axios.post(`/api/favorites/${id}/favorite`, {userId: user.id});
+        await axios.post(`/api/favorites/${id}/favorite`, { userId: user.id });
         setIsFavorite(true);
       }
     } catch (error) {
@@ -62,7 +64,9 @@ function ViewRecipeModal({ recipe }) {
 
   return (
     <>
-      <button className="view-btn" onClick={handleView}>VIEW</button>
+      <button className="view-btn" onClick={handleView}>
+        VIEW
+      </button>
 
       <Modal
         isOpen={isModalOpen}
@@ -71,37 +75,28 @@ function ViewRecipeModal({ recipe }) {
         ariaHideApp={false}
       >
         {/* Modal content */}
-        <button className="toggle-btn" onClick={toggleModal}>×</button>
+        <button className="toggle-btn" onClick={toggleModal}>
+          ×
+        </button>
         <br />
         <div className="all-text">
-        <label className="label">
-          Title:
-        </label>
-        <div className="text">{title}</div>
-        <br />
-        <label className="label">
-          Author:
-        </label>
-        <div className="text">{author}</div>
-        
-        <br />
-        <label className="label">
-          Backstory:
-        </label>
-        <div className="text">{backstory}</div>
-        
-        <br />
-        <label className="label">
-          Ingredients:
-        </label>
-        <div className="text">{ingredients}</div>
-        
-        <br />
-        <label className="label">
-          Instructions:
-        </label>
-        <div className="text">{instructions}</div>
-        
+          <label className="label">Title:</label>
+          <div className="text">{title}</div>
+          <br />
+          <label className="label">Author:</label>
+          <div className="text">{author}</div>
+
+          <br />
+          <label className="label">Backstory:</label>
+          <div className="text">{backstory}</div>
+
+          <br />
+          <label className="label">Ingredients:</label>
+          <div className="text">{ingredients}</div>
+
+          <br />
+          <label className="label">Instructions:</label>
+          <div className="text">{instructions}</div>
         </div>
         <br />
         <button className="favorite-btn" onClick={handleFavorite}>

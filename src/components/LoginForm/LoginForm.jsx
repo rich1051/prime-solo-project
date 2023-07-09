@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import {useSelector} from 'react-redux';
-import "./LoginForm.css"
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import "./LoginForm.css";
 
 function LoginForm() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const errors = useSelector(store => store.errors);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
   const login = (event) => {
@@ -14,14 +14,14 @@ function LoginForm() {
 
     if (username && password) {
       dispatch({
-        type: 'LOGIN',
+        type: "LOGIN",
         payload: {
           username: username,
           password: password,
         },
       });
     } else {
-      dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      dispatch({ type: "LOGIN_INPUT_ERROR" });
     }
   }; // end login
 
@@ -34,20 +34,20 @@ function LoginForm() {
         </h3>
       )}
       <div>
-        <label className='username-text' htmlFor="username">
+        <label className="username-text" htmlFor="username">
           Username:
           <input
             type="text"
             name="username"
             required
-            autoComplete='off'
+            autoComplete="off"
             value={username}
             onChange={(event) => setUsername(event.target.value)}
           />
         </label>
       </div>
       <div>
-        <label className='password-text' htmlFor="password">
+        <label className="password-text" htmlFor="password">
           Password:
           <input
             type="password"

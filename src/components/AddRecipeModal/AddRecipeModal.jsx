@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./AddRecipeModal.css";
 
-function AddRecipeModal( {refetch} ) {
+function AddRecipeModal({ refetch }) {
   const user = useSelector((store) => store.user);
-  const detailsReducer = useSelector ((store) => store.detailsReducer)
-  const imdbID = detailsReducer.imdbID
+  const detailsReducer = useSelector((store) => store.detailsReducer);
+  const imdbID = detailsReducer.imdbID;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [title, setTitle] = useState("");
   const [backstory, setBackstory] = useState("");
@@ -31,7 +31,7 @@ function AddRecipeModal( {refetch} ) {
       backstory,
       ingredients,
       instructions,
-      imdbID
+      imdbID,
     };
     // Dispatch an action to update the state with the new recipe
     dispatch({
@@ -100,47 +100,37 @@ function AddRecipeModal( {refetch} ) {
             ×
           </button>
           <br />
-          <label>
-            Title:
-          </label>
-            <input
-              className="title-input"
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-            />
+          <label>Title:</label>
+          <input
+            className="title-input"
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+          />
           <br />
-          <label>
-            Author:
-          </label>
-            <p className="author-input">{author}</p>
+          <label>Author:</label>
+          <p className="author-input">{author}</p>
           <br />
-          <label>
-            Backstory:
-          </label>
-            <input
-              className="backstory-input"
-              value={backstory}
-              onChange={(e) => setBackstory(e.target.value)}
-            />
+          <label>Backstory:</label>
+          <input
+            className="backstory-input"
+            value={backstory}
+            onChange={(e) => setBackstory(e.target.value)}
+          />
           <br />
-          <label>
-            Ingredients:
-          </label>
-            <input
-              className="ingredients-input"
-              value={ingredients}
-              onChange={(e) => setIngredients(e.target.value)}
-            />
+          <label>Ingredients:</label>
+          <input
+            className="ingredients-input"
+            value={ingredients}
+            onChange={(e) => setIngredients(e.target.value)}
+          />
           <br />
-          <label>
-            Instructions:
-          </label>
-            <input
-              className="instructions-input"
-              value={instructions}
-              onChange={(e) => setInstructions(e.target.value)}
-            />
+          <label>Instructions:</label>
+          <input
+            className="instructions-input"
+            value={instructions}
+            onChange={(e) => setInstructions(e.target.value)}
+          />
           <br />
           <button className="add-btn" type="submit">
             Add Recipe

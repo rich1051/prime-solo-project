@@ -10,7 +10,7 @@ function EditRecipeModal({ recipe, onEdit = () => {} }) {
   const [backstory, setBackstory] = useState(recipe.backstory);
   const [ingredients, setIngredients] = useState(recipe.ingredients);
   const [instructions, setInstructions] = useState(recipe.instructions);
-  const author = user.username
+  const author = user.username;
   const dispatch = useDispatch();
 
   useEffect(() => {
