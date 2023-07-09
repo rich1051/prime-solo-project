@@ -70,41 +70,43 @@ function ViewRecipeModal({ recipe }) {
         contentLabel="Add Recipe Modal"
         ariaHideApp={false}
       >
-        <div className="modal-background">
         {/* Modal content */}
         <button className="toggle-btn" onClick={toggleModal}>×</button>
         <br />
         <div className="all-text">
         <label className="label">
           Title:
-          <div className="text">{title}</div>
         </label>
+        <div className="text">{title}</div>
         <br />
         <label className="label">
           Author:
-          <div className="text">{author}</div>
         </label>
+        <div className="text">{author}</div>
+        
         <br />
         <label className="label">
           Backstory:
-          <div className="text">{backstory}</div>
         </label>
+        <div className="text">{backstory}</div>
+        
         <br />
         <label className="label">
           Ingredients:
-          <div className="text">{ingredients}</div>
         </label>
+        <div className="text">{ingredients}</div>
+        
         <br />
         <label className="label">
           Instructions:
-          <div className="text">{instructions}</div>
         </label>
+        <div className="text">{instructions}</div>
+        
         </div>
         <br />
         <button className="favorite-btn" onClick={handleFavorite}>
           {isFavorite ? "Unfavorite" : "Favorite"}
         </button>
-        </div>
       </Modal>
     </>
   );

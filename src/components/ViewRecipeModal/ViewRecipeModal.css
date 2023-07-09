@@ -1,11 +1,12 @@
 .label {
     color: black;
+    font-weight: 800;
 }
 
 .text {
     color: black;
     padding-top: 20px;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 }
 
 input {
@@ -23,6 +24,7 @@ input {
     background-color: black;
     font-size: 1.1em;
     transition: all 0.4s ease;
+    margin-bottom: 50px;
   }
 
   .favorite-btn:hover {
@@ -46,6 +48,7 @@ input {
     color: whitesmoke;
     background-color: darkred;
     transition: all 0.4s ease;
+    margin-bottom: 25px;
   }
 
   .toggle-btn:hover {
