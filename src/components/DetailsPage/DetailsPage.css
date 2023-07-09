@@ -1,30 +1,33 @@
+.details {
+  display: flex;
+  flex-direction: row;
+}
+
 .details-image {
-        border-radius: 18px;
-        border-style: double;
-        border-width: 15px;
-        border-color: black;
-        height: 400px;
-        width: 267px;
-        transition: all 0.8s ease;
+  border-radius: 18px;
+  border-style: double;
+  border-width: 15px;
+  border-color: black;
+  width: 300px;
+  transition: all 0.8s ease;
 }
 
 .details-image:hover {
-    border-color: black;
-    transition: all 0.6s ease;
-    background-color: rgb(219, 205, 255);
-}
-
-.details-title-image {
-    max-width: 33%;
-    text-align: center;
+  transition: all 0.6s ease;
+  background-color: rgb(219, 205, 255);
 }
 
 .details-title {
-    font-size: 1.3em;
+    font-size: 18pt;
+    width: 252px;
+    text-align: center;
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 15px;
 }
 
 .details-information {
-    max-width: 300px;
+    width: 300px;
     border-style: solid;
     border-color: black;
     border-radius: 10px;
@@ -33,28 +36,24 @@
   }
 
   .details-information:hover {
-    border-style: solid;
-    border-color: black;
     background-color: rgb(219, 205, 255);
-    color: black;
     transition: all 0.8s ease;
   }
   
   .details-description {
-    width: 65%;
+    flex: 1;
     border-style: solid;
     border-color: black;
     border-radius: 10px;
     padding: 25px;
     transition: all 0.8s ease;
     font-size: 1.4em;
+    margin-left: 25px;
+    margin-top: 77px;
   }
 
   .details-description:hover {
-    border-style: solid;
-    border-color: black;
     background-color: rgb(219, 205, 255);
-    color: black;
     transition: all 0.8s ease;
   }
 
@@ -68,20 +67,14 @@
     background-color: black;
     font-size: 1.1em;
     transition: all 0.4s ease;
+    
   }
 
   .back-btn:hover {
-    padding: 10px;
-    border-radius: 10px;
     border-style: inset;
     border-width: 5px;
     cursor: pointer;
     color: black;
     background-color: rgb(156, 120, 255);
     transition: all 0.4s ease;
-}
-
-.details-no-description {
-  display: flex;
-  flex-direction: column;
 }

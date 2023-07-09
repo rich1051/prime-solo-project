@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import { useState } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import "./AddRecipeModal.css";
@@ -13,6 +13,25 @@ function AddRecipeModal({ refetch }) {
   const [backstory, setBackstory] = useState("");
   const [ingredients, setIngredients] = useState("");
   const [instructions, setInstructions] = useState("");
+
+  // this is for presentation purposes only:
+  const handleKeydown = useCallback((event) => {
+    console.log("key hit!");
+    if (event.keyCode === 192) {
+      setTitle("a");
+      setBackstory("a");
+      setIngredients("a");
+      setInstructions("a");
+    }
+  }, []);
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
+  }, [handleKeydown]);
+  // end presentation stuff
 
   const author = user.username;
 

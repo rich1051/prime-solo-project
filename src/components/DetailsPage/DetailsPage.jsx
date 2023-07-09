@@ -49,8 +49,7 @@ function DetailsPage() {
 
   return (
     <>
-      <div className="details">
-        <div key={detailsReducer.imdbID}>
+        <div className="details" key={detailsReducer.imdbID}>
           <div className="details-no-description">
             <div className="details-title-image">
               <h3 className="details-title">
@@ -72,10 +71,11 @@ function DetailsPage() {
               IMDb Rating: {detailsReducer.imdbRating}
             </p>
           </div>
+          <div>
           <p className="details-description">Plot: {detailsReducer.Plot}</p>
+          </div>
         </div>
         <br />
-      </div>
       <AddRecipeModal refetch={getRecipes} />
       <RecipeList recipes={recipes} getRecipes={getRecipes} />
       <br />
