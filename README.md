@@ -26,17 +26,23 @@ With a nearly endless collection of movies at our disposal, it can be hard to ea
 
 ## Usage
 
-1. The app opens on a "Home" page, which provides a variety of movie posters and their accompanying titles. Upon click of a movie poster, the user will be navigated to a "Details" page for the specific movie clicked. 
+1. The app opens on a "Login" page. Click the Register button to create a new user.  
 
-2. The "Details" page depicts the movie title, poster, genres, and a brief description from the database. Clicking the "Back" button navigates the user back to "Home" page, where another movie may be selected. 
+2. The application will navigate to the "Home" page, which provides a search bar that taps into the OMDb API movie database. Clicking a movie card will take the user to the selected movie's "Details" page.
+
+3. The "Details" page provides movie-specific details, including cast, rating, and a plot summary. The user can also click the "Add" button, which initiates a modal form to create a recipe themed around the movie.
+
+4. Below the movie details is a list (if present) of recipes created by users. The current user can view other users' recipes and "Favorite" them, adding them to the "My Favorites" tab. If the current user has already created a recipe for the movie, they are able to "Edit" and "Delete" their own recipes from the list.
+
+5. Navigating to the "My Recipes" tab using the Navigation Bar will display all recipes created by the current user across all movies. The user can "View", "Delete", and "Edit" their recipes from this page. Navigating to the "My Favorites" tab will display all recipes favorited by the current user across all movies. The user can "View" and "Remove" (Unfavorite) their favorited recipes from this page.
 
 ## Built With
 
-Visual Studio Code, Node/Nodemon, React.js, Redux.js, Passport.js, Axios, Material-UI, SQL, and Express
+Visual Studio Code, Node/Nodemon, React.js, Redux.js, Passport.js, Axios, OMDb API, Material-UI, SQL, and Express
 
 ## Acknowledgement
 
-Thanks to the Prime Digital Academy faculty (Liz and Dane) who equipped me with the tools to make this application possible. Also thank you to my local Prime podmates Sabina, Adam, and Zackaria for helping me troubleshoot.
+Thanks to the Prime Digital Academy faculty (Liz and Dane) who equipped me with the tools to make this application possible. 
 
 ## Support
 
