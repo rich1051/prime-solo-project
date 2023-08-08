@@ -17,6 +17,6 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
+## Setup
 
-Create a new database called `prime_app` and create a `user` table:
+Create a new database called `reel_recipes` and run the starter queries outlined in the database.sql file.
